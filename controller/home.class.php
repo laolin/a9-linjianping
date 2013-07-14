@@ -18,6 +18,7 @@ class homeController extends appController
     $this->data['nav_items']["?a=lin&b=publications"]='发表论文';
     $this->data['nav_items']["?a=lin&b=hobbies"]='兴趣爱好';
     $this->data['nav_items']["?a=lin&b=contact"]='联系方式';
+    $this->data['nav_items']["?a=lin&b=sites"]='老林系列网站';
     $this->data['nav_items']["http://laolin.com/lin/"]='LaoLin BLOG';
     
     $this->data['css'][]='comm-box.css';
@@ -60,6 +61,9 @@ class homeController extends appController
       case 'hobbies':
         $this->_showSomePost('ID=4180','兴趣爱好');
         break;
+      case 'sites':
+        $this->_showLaolinSites();
+        break;
       case 'index':
       default:      
         //使用lazyRest的API，直接读wordpress的指定page的全部子页面的数据
@@ -87,6 +91,35 @@ class homeController extends appController
       $str.="\n</div>";
     }
     return $str;
+  }
+  function _showLaolinSites(){
+    $this->data['toptitle'] = 'Laolin系列站点';
+    $this->data['about_laolin']=array();
+    $this->data['about_laolin'][]=array(
+        'post_title'=>'老林系列网站',
+        'post_content'=>'<ol>
+            <li><a href="http://Laolin.com">Laolin.com (老林)</a></li>
+            <li><a href="http://LinJianPing.com">LinJianPing.com (林建萍)</a></li>
+            <li><a href="http://laolin.info">laolin.info</a></li>
+            <li><a href="http://iTongji.org">iTongji.org (i同济)</a></li>
+            <li><a href="http://TongJiAD.com">TongJiAD.com (同济AD)</a></li>
+            <li><a href="http://PingLiPou.com">PingLiPou.com (平立剖)</a></li>
+            <li><a href="http://AnQiuXiang.com">AnQiuXiang.com</a></li>
+            <li><a href="http://PKPMP.com">PKPMP.com</a></li>
+            </ol>
+        ');
+    $this->data['about_laolin'][]=array(
+        'post_title'=>'友情链接网站',
+        'post_content'=>'<ol>
+            <li><a href="http://13950773388.com">13950773388.com(仙龙山古典家具)</a></li>
+            <li><a href="http://xianlongshan.com">XianLongShan.com(仙龙山古典家具)</a></li>
+            <li><a href="http://wendayiliao.com">WenDaYiLiao.com(文达医疗)</a></li>
+            <li><a href="http://DLMUPT.com">DLMUPT.com</a></li>
+            </ol>
+        ');
+
+    
+    return render( $this->data );
   }
   function _showSomePost($query,$title){
     $this->data['toptitle'] = $title;
