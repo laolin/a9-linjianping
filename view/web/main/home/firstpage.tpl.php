@@ -14,6 +14,7 @@
   mat_color_indexes=[];
   mat_color_init=[];
   mat_obj=[];
+  mat_color_can_edit=false;
   
 $(function(){
   initMat();
@@ -26,6 +27,7 @@ $(function(){
   }
   
   $(".metbox").click(function () {
+    if(!mat_color_can_edit)return;
     i=$(this).attr('mat_id');
     oldColor=getColor(i);
     ln=color_names.length;
@@ -50,9 +52,22 @@ $(function(){
         }
       });
       mat_color_init[index]=c_index;
+      mat_color_indexes[index]=c_index;
       self.attr('mat_id',index);
     });
-    mat_color_indexes=mat_color_init;
+    $("body").bind("keyup", function(e) {
+      switch(e.which) {
+        case 67://C，打开/停止变色功能
+          mat_color_can_edit=!mat_color_can_edit;
+          console.log('color edit '+mat_color_can_edit);
+          break;
+        case 73://I，还原原色调
+          if(!mat_color_can_edit)break;
+          setColors(mat_color_init);
+          saveColorsToCookie();
+          break;
+      };
+    });
   };
   
   function saveColorsToCookie() {
