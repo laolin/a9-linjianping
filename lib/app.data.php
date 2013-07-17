@@ -16,8 +16,8 @@ $json_rows='
             }
         },           
         { "width":3,
-          "content":{"color":"green", "title":"生活流水帐",
-            "text":"<br/>林建萍，高级工程师，国家一级注册结构工程师<br/>现就职于同济大学建筑设计研究院（集团）有限公司",
+          "content":{"color":"purple", "title":"生活流水帐",
+            "text":"<img src=\"http://files.laolin.com/2013/laolin-family/20130525.laolin.family-200.jpg\"/>",
             "link":"/lin/?cat=2"
             }
         }
@@ -35,7 +35,7 @@ $json_rows='
           }
       },           
       { "width":3,
-        "content":{"color":"green", "title":"生活流水帐",
+        "content":{"color":"purple", "title":"生活流水帐",
           "text":"同济大学建筑设计研究院（集团）有限公司",
           "link":"/lin/?cat=2"
           }
@@ -55,7 +55,7 @@ $json_rows='
         "content":{"color":"orange", "title":"Photos","text":"Coming soon.","link":"#"}
       },
       { "width":3,
-        "content":{"color":"green", "title":"Photos","text":"Coming soon.","link":"#"}
+        "content":{"color":"purple", "title":"Photos","text":"Coming soon.","link":"#"}
       }
     ]}
     
