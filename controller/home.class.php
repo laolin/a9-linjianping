@@ -30,11 +30,10 @@ class homeController extends appController
     $this->data['toptitle'] = '林建萍'.
       ($_SERVER['HTTP_HOST']=='laolin.com'?'(LaoLin)':'') . 
         ' 同济大学建筑设计研究院（集团）有限公司 高级工程师 一级注册结构工程师';
-     
+      //error_reporting(E_ALL);
       uses('app.data.php');
-      $json_rows=MetorData();
-      $main_rows=json_decode($json_rows,true);
-      $txt=$this->_show_metro_box($main_rows);
+      $d_rows=MetorData();
+      $txt=$this->_show_metro_box($d_rows);
       $this->data['main_content']= $txt;
     return render( $this->data );
   }
@@ -75,16 +74,16 @@ class homeController extends appController
   function _show_metro_box($main_rows){
     $str='';
     foreach($main_rows['rows'] as $r) {
-      $str.="\n<div class='row-fluid metbox-row metbox-row-s{$r[height]}'>";
+      $str.="\n<div class='row-fluid metbox-row metbox-row-s{$r['height']}'>";
       foreach($r['data'] as $item){
         if(isset($item['rows'])){//递归
-          $str.="\n<span class='span{$item[width]}'>";
+          $str.="\n<span class='span{$item['width']}'>";
           $str.=$this->_show_metro_box($item);
           $str.="\n</span>";
         }else{//TODO:错误处理
-          $str.="\n<b x_onclick='location.href=\"{$item[content][link]}\"' class='span{$item[width]} metbox metbox-{$item[content][color]}'>";
-          $str.="\n<h2><a href='{$item[content][link]}'>{$item[content][title]}</a></h2>";
-          $str.="\n{$item[content][text]}";
+          $str.="\n<b x_onclick='location.href=\"{$item['content']['link']}\"' class='span{$item['width']} metbox metbox-{$item['content']['color']}'>";
+          $str.="\n<h2><a href='{$item['content']['link']}'>{$item['content']['title']}</a></h2>";
+          $str.="\n{$item['content']['text']}";
           $str.="\n</b>";
         }
       }
