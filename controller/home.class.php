@@ -26,7 +26,7 @@ class homeController extends appController
     $this->data['js'][]='jquery.cookie.js';
   }
   
-  function firstpage(){
+  function firstpage(){  
     $this->data['toptitle'] = '林建萍'.
       ($_SERVER['HTTP_HOST']=='laolin.com'?'(LaoLin)':'') . 
         ' 同济大学建筑设计研究院（集团）有限公司 高级工程师 一级注册结构工程师';

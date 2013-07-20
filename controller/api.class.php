@@ -2,7 +2,14 @@
 if( !defined('IN') ) die('bad request');
 include_once( AROOT . 'controller'.DS.'app.class.php' );
 error_reporting(0);
-
+/*
+all apis (actions of api controller) [ ?c=api&a=xxx ]
+0:test
+1:wp
+2:static
+3:jg
+4:tools
+*/
 class apiController extends appController
 {
   private $data;
@@ -16,7 +23,7 @@ class apiController extends appController
     echoRestfulData($data);
   }
   function wp() {
-    error_reporting(E_ALL);
+    //error_reporting(E_ALL);
     $b=v('b');
     if($b=='bycat'){
       $npost=intval(v('npost'));
@@ -31,7 +38,6 @@ class apiController extends appController
     global $post;
     $data['data']=array();
     $posts = get_posts("numberposts=$npost&cat=$cat");
-    echo '<pre>';
     foreach ($posts as $post) {
       //print_r($post);
       $d1=array();
@@ -41,7 +47,6 @@ class apiController extends appController
       $d1['link']=get_permalink();
       $data['data'][]=$d1;
     }
-    echo '</pre>';
 
     echoRestfulData($data);
   }
