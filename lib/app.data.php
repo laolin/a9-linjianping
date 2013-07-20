@@ -45,23 +45,15 @@ $st[]=array("color"=>"magenta", "title"=>"我爱我家",
               "link"=>"/lin/?cat=82"
   );
   $npost=2;
-  $url="http://api.laolin.com/v1.0/?c=api&a=wp&b=bycat&npost=$npost";
+  $url="http://api.laolin.com/v1.0/?c=api&a=wp&b=percat&npost=$npost&cat=70,72,77,82";
   
-  $rest=file_get_contents($url.'&cat=70');
+  $rest=file_get_contents($url);
   $res=json_decode($rest,true);
-  $jg=$res['data'];
-      
-  $rest=file_get_contents($url.'&cat=72');
-  $res=json_decode($rest,true);
-  $team=$res['data'];
+  $jg=$res['data'][70];
+  $team=$res['data'][72];
+  $dev=$res['data'][77];
+  $life=$res['data'][82];
   
-  $rest=file_get_contents($url.'&cat=77');
-  $res=json_decode($rest,true);
-  $dev=$res['data'];
-  
-  $rest=file_get_contents($url.'&cat=82');
-  $res=json_decode($rest,true);
-  $life=$res['data'];
   for($i=0; $i < $npost; $i++) {
     $jg[$i]["color"]="blue";
     $team[$i]["color"]="blue";
