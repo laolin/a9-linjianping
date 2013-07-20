@@ -4,11 +4,13 @@ include_once( AROOT . 'controller'.DS.'app.class.php' );
 error_reporting(0);
 /*
 all apis (actions of api controller) [ ?c=api&a=xxx ]
-0:test
-1:wp
-2:static
-3:jg
-4:tools
+a0:test
+  b1:test(?c=api 或 ?c=api&a=test)默认,用来测试api是否正常运作
+a1:wp
+  b1:percat(?c=api&a=wp&b=percat&cat=72,77&npost=2)每一指定cat类显示npost篇文章 
+a2:static
+a3:jg
+a4:tools
 */
 class apiController extends appController
 {
@@ -25,18 +27,27 @@ class apiController extends appController
   function wp() {
     //error_reporting(E_ALL);
     $b=v('b');
-    if($b=='bycat'){
+    if($b=='percat'){
+      $data["err_code"]=0;
+      $data["err_msg"]="success";
+      $data["data"]=array();
+      
       $npost=intval(v('npost'));
       if($npost<1) $npost=2;
-      $cat=intval(v('cat'));
-      if($cat<1) $cat=1;
-      $this->_wp_get_post_by_cat($cat,$npost);
+      
+      $cat=explode(',',v('cat'));
+      
+      foreach($cat as $cat1) {
+        $data[$cat1]=$this->_wp_get_post_by_cat($cat,$npost);
+      }
+      echoRestfulData($data);
     }
   }
     
   function _wp_get_post_by_cat($cat,$npost) {
     global $post;
-    $data['data']=array();
+    
+    $ret=array();
     $posts = get_posts("numberposts=$npost&cat=$cat");
     foreach ($posts as $post) {
       //print_r($post);
@@ -45,10 +56,10 @@ class apiController extends appController
       $d1['title']=get_the_title();    
       $d1['text']=get_the_excerpt();
       $d1['link']=get_permalink();
-      $data['data'][]=$d1;
+      $ret[]=$d1;
     }
+    return $ret;
 
-    echoRestfulData($data);
   }
   function _UnknowApi() {
     $data['err_code']=2001;
