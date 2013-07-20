@@ -19,6 +19,7 @@
       <li class="nav-header">LaoLin域名链接</li>
       <li class=" "><a href="http://LaoLin.com/" target="_blank">LaoLin.com</a></li>
       <li class=" "><a href="http://LinJianPing.com/" target="_blank">LinJianPing.com</a></li>
+      <li class=" "><a href="http://LaoLin.info/" target="_blank">LaoLin.info</a></li>
       <li class=" "><a href="http://WenDaYiLiao.com/" target="_blank">WenDaYiLiao.com</a></li>
       <li class=" "><a href="http://13950773388.COM/" target="_blank">13950773388.com</a></li>
       <li class=" "><a href="http://XIANLONGSHAN.COM/" target="_blank">XianLongShan.com</a></li>
@@ -31,7 +32,8 @@
   </div>
 
   <div class='span4'>
-   <p>老林的微信公众账号：laolin-jg , 请在微信里搜索“laolin-jg”或扫描以下二维码关注我的微信</p>
+   <p>老林的<b>微博</b>：<a href='http://weibo.com/n/laolincom/'>@LaolinCom</a>, 欢迎关注。</p>
+   <p>老林的<b>微信公众账号</b>：laolin-jg , 请在微信里搜索“laolin-jg”或扫描以下二维码关注我的微信</p>
   <img title='老林微信公众账号：laolin-jg' src='http://files.laolin.com/images/qrcode_for_laolin-jg_258.jpg'/>
   </div>
   <div class='span1'>
