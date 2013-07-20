@@ -40,7 +40,7 @@ $st[]=array("color"=>"green", "title"=>"编程爱好",
   );
 $st[]=array("color"=>"magenta", "title"=>"我爱我家",
               "text"=>"<img src=\"http://files.laolin.com/2013/laolin-family/20130525.laolin.family-200.jpg\"/>",
-              "link"=>"/lin/?cat=74"
+              "link"=>"/lin/?cat=82"
   );
 
 $jg=array();
