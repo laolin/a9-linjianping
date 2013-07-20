@@ -38,7 +38,7 @@ class apiController extends appController
       $cat=explode(',',v('cat'));
       
       foreach($cat as $cat1) {
-        $data['data'][$cat1]=$this->_wp_get_post_by_cat($cat,$npost);
+        $data['data'][$cat1]=$this->_wp_get_post_by_cat($cat1,$npost);
       }
       echoRestfulData($data);
     }

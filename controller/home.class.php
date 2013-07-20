@@ -31,7 +31,7 @@ class homeController extends appController
       ($_SERVER['HTTP_HOST']=='laolin.com'?'(LaoLin)':'') . 
         ' 同济大学建筑设计研究院（集团）有限公司 高级工程师 一级注册结构工程师';
       //error_reporting(E_ALL);
-      uses('app.data.php');
+      uses('home.data.php');
       $d_rows=MetorData();
       $txt=$this->_show_metro_box($d_rows);
       $this->data['main_content']= $txt;
