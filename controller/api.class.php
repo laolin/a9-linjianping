@@ -19,7 +19,7 @@ class apiController extends appController
   }
   
   function test() {
-    $data['reply']='API is ready.';
+    $data['reply']='LaoLinAPI is ready.';
     echoRestfulData($data);
   }
   function wp() {

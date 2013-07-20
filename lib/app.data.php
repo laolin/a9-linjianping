@@ -36,7 +36,7 @@ $st[]=array("color"=>"red", "title"=>"团队建设",
               "text"=>"<img src=\"http://files.laolin.com/2013/structural-engineering/20130715-team.jpg\"/>",
               "link"=>"/lin/?cat=72"
   );
-$st[]=array("color"=>"green", "title"=>"编程爱好",
+$st[]=array("color"=>"green", "title"=>"老林编程",
               "text"=>"<img src=\"http://files.laolin.com/2013/development/20130715-development.jpg\"/>",
               "link"=>"/lin/?cat=77"
   );
@@ -45,7 +45,7 @@ $st[]=array("color"=>"magenta", "title"=>"我爱我家",
               "link"=>"/lin/?cat=82"
   );
   $npost=2;
-  $url="http://laolin.com/?c=api&a=wp&b=bycat&npost=$npost";
+  $url="http://api.laolin.com/v1.0/?c=api&a=wp&b=bycat&npost=$npost";
   
   $rest=file_get_contents($url.'&cat=70');
   $res=json_decode($rest,true);
