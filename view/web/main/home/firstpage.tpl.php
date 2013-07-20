@@ -66,6 +66,15 @@ $(function(){
           setColors(mat_color_init);
           saveColorsToCookie();
           break;
+        case 82://r，随机色
+          if(!mat_color_can_edit)break;
+          temp=[];
+          $.each(mat_color_indexes,function(k,v){
+              temp[k]=Math.floor((Math.random()*color_names.length));
+            });
+          setColors(temp);
+          saveColorsToCookie();
+          break;
       };
     });
   };
