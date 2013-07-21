@@ -29,7 +29,7 @@ class apiController extends appController
     $b=v('b');
     $data["err_code"]=0;
     $data["err_msg"]="success";
-    if($b=='percat'){
+    if($b=='bycat'){
       $data["data"]=array();
       
       $npost=intval(v('npost'));
