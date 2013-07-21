@@ -27,9 +27,9 @@ class apiController extends appController
   function wp() {
     //error_reporting(E_ALL);
     $b=v('b');
+    $data["err_code"]=0;
+    $data["err_msg"]="success";
     if($b=='percat'){
-      $data["err_code"]=0;
-      $data["err_msg"]="success";
       $data["data"]=array();
       
       $npost=intval(v('npost'));
@@ -40,8 +40,9 @@ class apiController extends appController
       foreach($cat as $cat1) {
         $data['data'][$cat1]=$this->_wp_get_post_by_cat($cat1,$npost);
       }
-      echoRestfulData($data);
+      return echoRestfulData($data);
     }
+    return $this->_UnknowApi();
   }
     
   function _wp_get_post_by_cat($cat,$npost) {

@@ -45,7 +45,7 @@ $st[]=array("color"=>"magenta", "title"=>"我爱我家",
               "link"=>"/lin/?cat=82"
   );
   $npost=2;
-  $url="http://api.laolin.com/v1.0/?c=api&a=wp&b=percat&npost=$npost&cat=70,72,77,82";
+  $url="http://api.laolin.com/v1.0/?c=api&a=wp&b=bycat&npost=$npost&cat=70,72,77,82";
   
   $rest=file_get_contents($url);
   $res=json_decode($rest,true);
