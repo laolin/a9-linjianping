@@ -1,14 +1,12 @@
 <?php
   function getAppDataDefault() {
-    $aName='LinJianPing';
     $data['sitelink'] = './';
     $data['sitename'] = c('site_name');
     $data['toptitle'] = '欢迎光临';
     
-    $data['appname']=$aName;
+    $data['appname']=c('site_name');
     $data['nav_items']=array();
-    $data['nav_items']["?c=home"]='home';
-    $data['nav_items']["?c=about"]='about';
+    $data['nav_items']["?c=".c('default_controller')."&a=".c('default_action')]='home';
     return $data;
   }
 

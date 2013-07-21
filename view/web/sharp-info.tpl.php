@@ -18,16 +18,12 @@
 }
     </style>
 	<link href="static/css/bootstrap-responsive.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="static/css/style.css" type="text/css" >
 <?php if( isset($css) && is_array( $css ) ): ?>
         <?php foreach( $css as $cfile ): ?><link rel="stylesheet" type="text/css" href="static/css/<?=$cfile?>">
         <?php endforeach; ?>
 <?php endif; ?>
 <!--[if lt IE 9]>
-      <script src="static/script/html5.js"></script>
-<![endif]-->
-<!--[if IE 6]>    
-    		<link href="static/css/ie6.min.css" rel="stylesheet">
+      <script src="static/js/html5.js"></script>
 <![endif]-->
 </head>    
 <body>
@@ -43,17 +39,13 @@
      
     </div><!--/.fluid-container-->
     
-    <script src="http://lib.sinaapp.com/js/jquery/1.7/jquery.min.js"></script>
-    <script src="static/script/bootstrap.min.js"></script>
-    <!--[if IE 6]>    
-    		 <script src="static/script/ie6.min.js"></script>
-	<![endif]-->
+    <script src="static/js/jquery-1.8.0.min.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
     
-    <script src="static/script/app.js"></script>
     
     
     <?php if( isset($js) && is_array( $js ) ): ?>
-        <?php foreach( $js as $jfile ): ?><script type="text/javascript" src="static/script/<?=$jfile;?>" ></script>
+        <?php foreach( $js as $jfile ): ?><script type="text/javascript" src="static/js/<?=$jfile;?>" ></script>
         <?php endforeach; ?>
 	<?php endif; ?>
 	

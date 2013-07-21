@@ -73,7 +73,6 @@
     </div><!--/.fluid-container-->
     
     <script src="static/js/bootstrap.min.js"></script>
-    <!-- s cript src="static/js/hammer.min.js"></scrip t -->
     <script src="static/js/laolin.main.js"></script>
     <script src="static/js/laolin.router.js"></script>
     <script src="static/js/laolin.s_boxes.js"></script>
