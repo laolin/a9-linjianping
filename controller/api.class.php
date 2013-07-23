@@ -87,7 +87,7 @@ class apiController extends appController
   }
   function _UnknowApi() {
     $data['err_code']=2001;
-    $data['err_msg']='Unknow api  view page:[ ?c=api&a=help ] for help.';
+    $data['err_msg']='Unknow api. View page:[ ?c=api&a=help ] for help.';
     ajax_echo( json_encode($data));
   }
 
