@@ -15,12 +15,19 @@
       </li>
       <li>
       a=wp<br/>
+        返回wordpress文章或页面<b>摘要</b>的API
         <ol>
           <li>
             b=bycat(?c=api&a=wp&b=bycat&cat=72,77&npost=2)每一指定cat类显示npost篇文章 
           </li>
           <li> 
             b=byid(?c=api&a=wp&b=byid&id=4001,4002) 指定id的文章 
+          </li>
+          <li> 
+            b=pagebyid(?c=api&a=wp&b=pagebyid&id=3001,3002) 指定id的页面 
+          </li>
+          <li> 
+            b=pagebyparent(?c=api&a=wp&b=pagebyparent&id=3333) 指定(一个)id的子页面 
           </li>
         </ol>
 
