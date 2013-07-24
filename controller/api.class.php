@@ -52,7 +52,7 @@ class apiController extends appController
     $b=v('b');
     $data["err_code"]=0;
     $data["err_msg"]="success";
-    swithc($b) {
+    switch($b) {
       case 'bycat':
         $data["data"]=array();
         
@@ -65,7 +65,7 @@ class apiController extends appController
           $data['data'][$cat1]=$this->_wpGetPost("numberposts=$npost&cat=$cat1");
         }
         return echoRestfulData($data);
-      case 'byid':
+      //case 'byid':
     }
     return $this->_UnknowApi();
   }
