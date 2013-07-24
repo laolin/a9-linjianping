@@ -67,8 +67,25 @@ class apiController extends appController
         return echoRestfulData($data);
       case 'byid':
         $data["data"]=array();
+        $npost=intval(v('npost'));
+        if($npost<1) $npost=9;
         $ids=explode(',',v('id'));
-        $data['data'][$cat1]=$this->_wpGetPost(array( 'post_type' => 'post', 'post__in' => $ids ));
+        $data['data'][$cat1]=$this->_wpGetPost(array( 'posts_per_page' => $npost,'post_type' => 'post', 'post__in' => $ids ));
+        return echoRestfulData($data);
+      case 'pagebyid':
+        $data["data"]=array();
+        $npost=intval(v('npost'));
+        if($npost<1) $npost=9;
+        $ids=explode(',',v('id'));
+        $data['data'][$cat1]=$this->_wpGetPost(array( 'posts_per_page' => $npost,'post_type' => 'page', 'post__in' => $ids ));
+        return echoRestfulData($data);
+      case 'pagebyparent':
+        $data["data"]=array();
+        $npost=intval(v('npost'));
+        if($npost<1) $npost=9;
+        $ids=explode(',',v('id'));
+        $data['data'][$cat1]=$this->_wpGetPost(array( 'posts_per_page' => $npost,'post_type' => 'page', 'post_parent__in' => $ids ));
+        echo('<pre>');var_dump($data);
         return echoRestfulData($data);
     }
     return $this->_UnknowApi();
