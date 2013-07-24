@@ -52,27 +52,29 @@ class apiController extends appController
     $b=v('b');
     $data["err_code"]=0;
     $data["err_msg"]="success";
-    if($b=='bycat'){
-      $data["data"]=array();
-      
-      $npost=intval(v('npost'));
-      if($npost<1) $npost=2;
-      
-      $cat=explode(',',v('cat'));
-      
-      foreach($cat as $cat1) {
-        $data['data'][$cat1]=$this->_wpGetPostByCat($cat1,$npost);
-      }
-      return echoRestfulData($data);
+    swithc($b) {
+      case 'bycat':
+        $data["data"]=array();
+        
+        $npost=intval(v('npost'));
+        if($npost<1) $npost=2;
+        
+        $cat=explode(',',v('cat'));
+        
+        foreach($cat as $cat1) {
+          $data['data'][$cat1]=$this->_wpGetPost("numberposts=$npost&cat=$cat1");
+        }
+        return echoRestfulData($data);
+      case 'byid':
     }
     return $this->_UnknowApi();
   }
     
-  function _wpGetPostByCat($cat,$npost) {
+  function _wpGetPost($qstr) {
     global $post;
     
     $ret=array();
-    $posts = get_posts("numberposts=$npost&cat=$cat");
+    $posts = get_posts($qstr);
     foreach ($posts as $post) {
       //print_r($post);
       $d1=array();
