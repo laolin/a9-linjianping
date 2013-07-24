@@ -65,7 +65,11 @@ class apiController extends appController
           $data['data'][$cat1]=$this->_wpGetPost("numberposts=$npost&cat=$cat1");
         }
         return echoRestfulData($data);
-      //case 'byid':
+      case 'byid':
+        $data["data"]=array();
+        $ids=explode(',',v('id'));
+        $data['data'][$cat1]=$this->_wpGetPost(array( 'post_type' => 'post', 'post__in' => $ids ));
+        return echoRestfulData($data);
     }
     return $this->_UnknowApi();
   }
