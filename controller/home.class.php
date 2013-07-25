@@ -92,7 +92,7 @@ class homeController extends appController
     return $str;
   }
   function _showLaolinSites(){
-    $this->data['toptitle'] = 'Laolin系列站点';
+    $this->data['toptitle'] = 'Laolin系列网站';
     $this->data['about_laolin']=array();
     $this->data['about_laolin'][]=array(
         'post_title'=>'老林系列网站',
