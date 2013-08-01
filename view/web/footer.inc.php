@@ -1,5 +1,5 @@
 <hr/>
-<div  class='row'>
+<div  class='row hidden-sm'>
 
   <div class='col-sm-1 col-lg-1'>
   </div>

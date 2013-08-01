@@ -9,16 +9,26 @@
 
     <!-- Le styles -->
     <link href="static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="static/css/nav-theme-1.css" rel="stylesheet">
     <style type="text/css">
-      body {
-        padding-top: 60px;
-        padding-bottom: 40px;
+      @media  (min-width: 992px){
+        body {
+          padding-top: 60px;
+          padding-bottom: 40px;
+        }
       }
+      @media (max-width: 991px) and (min-width: 768px){
+        body {
+          padding-top: 110px;
+          padding-bottom: 40px;
+        }
+      }
+    
       .sidebar-nav {
         padding: 9px 0;
       }
 
-      @media (max-width: 980px) {
+      @media (max-width: 991px) {
         /* Enable use of floated navbar text */
         .navbar-text.pull-right {
           float: none;
@@ -70,9 +80,7 @@
     
     <script src="static/js/bootstrap.min.js"></script>
     <script src="static/js/laolin.main.js"></script>
-    <script src="static/js/laolin.router.js"></script>
-    <script src="static/js/laolin.s_boxes.js"></script>
-    
+    <script src="static/js/laolin.router.js"></script>    
     
     <?php if( isset($js) && is_array( $js ) ): ?>
         <?php foreach( $js as $jfile ): 
