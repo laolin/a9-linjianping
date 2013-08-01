@@ -39,10 +39,10 @@
   <div class='col-sm-1 col-lg-1'>
   </div>
 
-  <hr/>
+  <hr/ class='col-12'>
 </div> 
 <div class='row'>
-<div class='col-offset-5 col-sm-2 col-lg-2'>
+<div class='col-4 col-sm-4 col-lg-5'></div><div class='col-8 col-sm-8 col-lg-7'>
 &copy; 
 <?php
 echo $_SERVER['HTTP_HOST']=='laolin.com'?
