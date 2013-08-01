@@ -14,10 +14,6 @@
           padding-top: 50px;
           padding-bottom: 40px;
         }
-    
-      .sidebar-nav {
-        padding: 9px 0;
-      }
 
       @media (max-width: 991px) {
         /* Enable use of floated navbar text */
