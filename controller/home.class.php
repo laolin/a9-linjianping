@@ -74,17 +74,17 @@ class homeController extends appController
   function _show_metro_box($main_rows){
     $str='';
     foreach($main_rows['rows'] as $r) {
-      $str.="\n<div class='row-fluid metbox-row metbox-row-s{$r['height']}'>";
+      $str.="\n<div class='row metbox-row metbox-row-s{$r['height']}'>";
       foreach($r['data'] as $item){
         if(isset($item['rows'])){//递归
-          $str.="\n<span class='span{$item['width']}'>";
+          $str.="\n<div class='col-12 col-sm-{$item['width']} col-lg-{$item['width']}'>";
           $str.=$this->_show_metro_box($item);
-          $str.="\n</span>";
+          $str.="\n</div>";
         }else{//TODO:错误处理
-          $str.="\n<b x_onclick='location.href=\"{$item['content']['link']}\"' class='span{$item['width']} metbox metbox-{$item['content']['color']}'>";
+          $str.="\n<span class='col-12 col-sm-{$item['width']} col-lg-{$item['width']}'><b class='metbox metbox-{$item['content']['color']}'>";
           $str.="\n<h2><a href='{$item['content']['link']}'>{$item['content']['title']}</a></h2>";
           $str.="\n{$item['content']['text']}";
-          $str.="\n</b>";
+          $str.="\n</b></span>";
         }
       }
       $str.="\n</div>";

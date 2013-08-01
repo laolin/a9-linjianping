@@ -1,11 +1,11 @@
-<div class="span12"><div class=" "><!--content-->
+<div class="col-lg-12">
 
-<div class="row-fluid">
+  <div class="mat-container">
 <?php
       echo $main_content ;
 ?>
 
-</div>         
+  </div>         
 <script>
 
   color_names=["blue","green","red","yellow","orange",
@@ -105,4 +105,4 @@ $(function(){
   
   
 </script>    
-</div></div>
+</div>

@@ -1,5 +1,5 @@
-<div class="span12"><div class=" "><!--content-->
-<div class="row-fluid">
+<div class="col-lg-12">
+<div class="row">
 
     <h3>这些是LaoLin的私有API，非通用API</h3>
     <h4>当然这些也不是什么秘密API。这些API主要是给LaoLin自己用的，所以没考虑什么通用性，一般说来对别人没什么用，如果碰巧有人用得上，纯属巧合，欢迎使用。</h4>
@@ -42,4 +42,4 @@
 <script>
 
 </script>    
-</div></div>
+</div>

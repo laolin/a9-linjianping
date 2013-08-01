@@ -9,10 +9,9 @@
 
     <!-- Le styles -->
     <link href="static/css/bootstrap.min.css" rel="stylesheet">
-    <link href="static/css/laolin.s_boxes.css" rel="stylesheet">
     <style type="text/css">
       body {
-        padding-top: 70px;
+        padding-top: 60px;
         padding-bottom: 40px;
       }
       .sidebar-nav {
@@ -28,8 +27,6 @@
         }
       }
     </style>
-
-    <link href="static/css/bootstrap-responsive.min.css" rel="stylesheet">
 
     <script src="static/js/jquery-1.8.0.min.js"></script>
     <script src="static/js/underscore-min.js"></script>
@@ -48,39 +45,33 @@
     <?php @include_once( dirname(__FILE__) ) . DS . 'header.inc.php'; ?>  
  
 
-    <div class="container-fluid">
-      <div class="row-fluid" id="opt-main-box">
+    <!-- content -->
+    <div class="container">
+      <div class="row" id="opt-main-box">
       
       <?php  
       $tfile = 'view' . DS  . 'web' . DS . 'side' . DS . g('c') . DS . g('a') . '.tpl.php';
       if( file_exists( AROOT . $tfile ) ) include( AROOT . $tfile );
-      else @include_once( dirname(__FILE__) ) . DS . 'side.inc.php';
        ?>
-        
-       
-          <?php 
+
+      <?php 
       $tfile = 'view' . DS  . 'web' . DS . 'main' . DS . g('c') . DS . g('a') . '.tpl.php';
       if( file_exists( AROOT . $tfile ) ) include( AROOT . $tfile );
       else @include_once( dirname(__FILE__) ) . DS . 'content.inc.php';
       ?> 
-
-     
       </div><!--/row-->
-      
-     <?php @include_once( dirname(__FILE__) ) . DS . 'footer.inc.php'; ?>
+    </div><!-- /content -->
+      <!-- footer -->
+    <div class="container">
+      <?php @include_once( dirname(__FILE__) ) . DS . 'footer.inc.php'; ?>
      
         
-    </div><!--/.fluid-container-->
+    </div><!-- /footer -->
     
     <script src="static/js/bootstrap.min.js"></script>
     <script src="static/js/laolin.main.js"></script>
     <script src="static/js/laolin.router.js"></script>
     <script src="static/js/laolin.s_boxes.js"></script>
-     <script>
-      function set_main_box(htm) {
-        $('#opt-main-box').html(htm);
-      }
-    </script>
     
     
     <?php if( isset($js) && is_array( $js ) ): ?>

@@ -1,4 +1,4 @@
-<div class="span9"><div class="hero-unit">
+<div class="col-md-9"><div class="hero-unit">
             <h1>Welcome!</h1>
             <p></p>
             <p>这是未定义的默认页面.</p> 

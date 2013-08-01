@@ -1,4 +1,4 @@
-<div class="span3">
+<div class="col-12 col-lg-3 col-sm-3">
 <div class="well sidebar-nav">
             <ul class="nav nav-pills nav-stacked">
               <li class="nav-header">林建萍</li>
@@ -7,7 +7,7 @@
                 } ?>
             </ul>  
 </div><!--/.well -->
-</div><!--/span3 -->
+</div><!--/col 3 -->
 
 
             

@@ -1,9 +1,9 @@
 <hr/>
-<div  class='row-fluid'>
+<div  class='row'>
 
-  <div class='span1'>
+  <div class='col-sm-1 col-lg-1'>
   </div>
-  <div class='span3'>
+  <div class='col-sm-3 col-lg-3'>
     <ul class="nav nav-list">
       <li class="nav-header">LaoLin系列</li>
       <li class=" "><a href="http://LaoLin.com/lin/" target="_blank">老林日记</a></li>
@@ -14,7 +14,7 @@
     </ul>
   </div>
 
-  <div class='span3'>
+  <div class='col-sm-3 col-lg-3'>
     <ul class="nav nav-list">
       <li class="nav-header">LaoLin域名链接</li>
       <li class=" "><a href="http://LaoLin.com/" target="_blank">LaoLin.com</a></li>
@@ -31,23 +31,23 @@
     </ul>
   </div>
 
-  <div class='span4'>
+  <div class='col-sm-4 col-lg-4'>
    <p>老林的<b>微博</b>：<a href='http://weibo.com/n/laolincom/'>@LaolinCom</a>, 欢迎关注。</p>
    <p>老林的<b>微信公众账号</b>：laolin-jg , 请在微信里搜索“laolin-jg”或扫描以下二维码关注我的微信</p>
   <img title='老林微信公众账号：laolin-jg' src='http://files.laolin.com/images/qrcode_for_laolin-jg_258.jpg'/>
   </div>
-  <div class='span1'>
+  <div class='col-sm-1 col-lg-1'>
   </div>
 
+  <hr/>
 </div> 
-<hr/>
-<div class='row-fluid'>
-  <div class='offset5'>
+<div class='row'>
+<div class='col-offset-5 col-sm-2 col-lg-2'>
 &copy; 
 <?php
 echo $_SERVER['HTTP_HOST']=='laolin.com'?
 "<a href='http://laolin.com'>LaoLin</a> ":
 "<a href='http://linjianping.com'>林建萍</a> ";
  echo date('Y')?>
-  </div>
+</div>
 </div>
