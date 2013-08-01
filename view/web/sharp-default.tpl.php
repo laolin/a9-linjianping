@@ -9,7 +9,6 @@
 
     <!-- Le styles -->
     <link href="static/css/bootstrap.min.css" rel="stylesheet">
-    <link href="static/css/nav-theme-1.css" rel="stylesheet">
     <style type="text/css">
         body {
           padding-top: 50px;
@@ -31,8 +30,6 @@
     </style>
 
     <script src="static/js/jquery-1.8.0.min.js"></script>
-    <script src="static/js/underscore-min.js"></script>
-    <script src="static/js/backbone-min.js"></script>
 
     <?php if( isset($css) && is_array( $css ) ): ?>
         <?php foreach( $css as $cfile ): ?><link rel="stylesheet" type="text/css" href="static/css/<?=$cfile?>">
@@ -48,7 +45,7 @@
  
 
     <!-- content -->
-    <div class="container">
+    <div id="main-box"><div class="container">
       <div class="row" id="opt-main-box">
       
       <?php  
@@ -62,17 +59,15 @@
       else @include_once( dirname(__FILE__) ) . DS . 'content.inc.php';
       ?> 
       </div><!--/row-->
-    </div><!-- /content -->
+    </div></div><!-- /content -->
       <!-- footer -->
-    <div class="container">
+    <div class="container" id="footer-box">
       <?php @include_once( dirname(__FILE__) ) . DS . 'footer.inc.php'; ?>
      
         
     </div><!-- /footer -->
     
     <script src="static/js/bootstrap.min.js"></script>
-    <script src="static/js/laolin.main.js"></script>
-    <script src="static/js/laolin.router.js"></script>    
     
     <?php if( isset($js) && is_array( $js ) ): ?>
         <?php foreach( $js as $jfile ): 
