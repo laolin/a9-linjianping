@@ -18,8 +18,8 @@ class homeController extends appController
     $this->data['nav_items']["?a=lin&b=publications"]='发表论文';
     $this->data['nav_items']["?a=lin&b=hobbies"]='兴趣爱好';
     $this->data['nav_items']["?a=lin&b=contact"]='联系方式';
-    $this->data['nav_items']["?a=lin&b=sites"]='老林系列网站';
-    $this->data['nav_items']["http://laolin.com/lin/"]='LaoLin BLOG';
+    $this->data['nav_items']["?a=lin&b=sites"]='老林系列';
+    $this->data['nav_items']["http://laolin.com/lin/"]='BLOG';
     
     $this->data['css'][]='comm-box.css';
     $this->data['css'][]='laolin.metro.box.css';

@@ -11,24 +11,10 @@
     <link href="static/css/bootstrap.min.css" rel="stylesheet">
     <link href="static/css/nav-theme-1.css" rel="stylesheet">
     <style type="text/css">
-      @media  (min-width: 992px){
         body {
-          padding-top: 60px;
+          padding-top: 50px;
           padding-bottom: 40px;
         }
-      }
-      @media (max-width: 991px) and (min-width: 768px){
-        body {
-          padding-top: 110px;
-          padding-bottom: 40px;
-        }
-      }
-      @media  (max-width: 767px){
-        body {
-          padding-top: 60px;
-          padding-bottom: 40px;
-        }
-      }
     
       .sidebar-nav {
         padding: 9px 0;
