@@ -9,6 +9,10 @@
 
     <!-- Le styles -->
     <link href="static/css/bootstrap.min.css" rel="stylesheet">
+    <?php if( isset($css) && is_array( $css ) )
+          foreach( $css as $cfile )
+            echo "<link href='static/css/$cfile' rel='stylesheet'>";
+    ?>
     <style type="text/css">
         body {
           padding-top: 50px;
@@ -23,32 +27,26 @@
           padding-right: 5px;
         }
       }
-    </style>
+     </style>
 
-    <?php if( isset($css) && is_array( $css ) )
-          foreach( $css as $cfile )
-            echo "<link href='static/css/$cfile' rel='stylesheet'>";
-    ?>
-    
+   
     <script src="static/js/jquery-1.8.0.min.js"></script>
     <script src="static/js/laolin.main.js"></script>
     <script>
         $(function(){
           console.log('adding js files');
           laolin.wait.begin('init');
-          laolin.wait.js('static/js/bootstrap.min.js');
-          laolin.wait.js('static/js/laolin.ui.js');
+          laolin.wait.js(['static/js/bootstrap.min.js'
+            , 'static/js/laolin.ui.js'
 
     <?php if( isset($js) && is_array( $js ) ): ?>
-          <?php foreach( $js as $jskey => $jfile ): 
-
-          if(strpos($jfile,'://')!=0)
-            echo "\n laolin.wait.js('$jfile');";
-          else
-            echo "\n laolin.wait.js('static/js/$jfile');";
-            
-          endforeach; ?>
-          
+          <?php foreach( $js as $jskey => $jfile ){ 
+            if(strpos($jfile,'://')!=0)
+              echo "\n,'$jfile'";
+            else
+              echo "\n,'static/js/$jfile'";
+          }?>
+          ]);
           console.log('add js files ok.');
         });
   <?php endif; ?>
