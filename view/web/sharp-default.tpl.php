@@ -33,15 +33,13 @@
     <script src="static/js/jquery-1.8.0.min.js"></script>
     <script src="static/js/laolin.main.js"></script>
     <script>
-      $(function(){
-        laolin.fn.loadJs('bootstrap','static/js/bootstrap.min.js');
-        laolin.fn.loadJs('laolin-ui','static/js/laolin.ui.js');
-      });
-
-    <?php if( isset($js) && is_array( $js ) ): ?>
-        $(function(){        
+        $(function(){
           console.log('adding js files');
           laolin.wait.begin('init');
+          laolin.wait.js('static/js/bootstrap.min.js');
+          laolin.wait.js('static/js/laolin.ui.js');
+
+    <?php if( isset($js) && is_array( $js ) ): ?>
           <?php foreach( $js as $jskey => $jfile ): 
 
           if(strpos($jfile,'://')!=0)
@@ -84,7 +82,6 @@
         
     </div><!-- /footer -->
     
-    <script src=""></script>
   <script type="text/javascript">
   if('127.0.0.1' != document.location.host && !_gaq){var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-922595-1']);
