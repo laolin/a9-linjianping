@@ -25,34 +25,36 @@
       }
     </style>
 
-    <script src="static/js/jquery-1.8.0.min.js"></script>
-
     <?php if( isset($css) && is_array( $css ) ): ?>
         <?php foreach( $css as $cfile ): ?><link rel="stylesheet" type="text/css" href="static/css/<?=$cfile?>">
         <?php endforeach; ?>
     <?php endif; ?>
     
-
+    <script src="static/js/jquery-1.8.0.min.js"></script>
     <script src="static/js/laolin.main.js"></script>
-    <?php if( isset($js) && is_array( $js ) ): ?>
-        <script>$(function(){console.log('adding js files');
-        <?php foreach( $js as $jskey => $jfile ): 
+    <script>
+      $(function(){
+        laolin.fn.loadJs('bootstrap','static/js/bootstrap.min.js');
+        laolin.fn.loadJs('laolin-ui','static/js/laolin.ui.js');
+      });
 
-        if(strpos($jfile,'://')!=0)
-          echo "\nlaolin.fn.loadJs('jsid-{$jskey}','$jfile').onload=function(){
-            $(document).trigger('js-loaded-{$jskey}');  
-          };";
-          //(function(){$(document).trigger('js-loaded-{$jskey}');});";
-        else
-          echo "\nlaolin.fn.loadJs('jsid-{$jskey}','static/js/$jfile').onload=function(){
-            $(document).trigger('js-loaded-{$jskey}');  
-          };";
-        endforeach; ?>
-        
-        console.log('add js files ok.');
+    <?php if( isset($js) && is_array( $js ) ): ?>
+        $(function(){        
+          console.log('adding js files');
+          laolin.wait.begin('init');
+          <?php foreach( $js as $jskey => $jfile ): 
+
+          if(strpos($jfile,'://')!=0)
+            echo "\n laolin.wait.js('$jfile');";
+          else
+            echo "\n laolin.wait.js('static/js/$jfile');";
+            
+          endforeach; ?>
+          
+          console.log('add js files ok.');
         });
-      </script>
   <?php endif; ?>
+    </script>
   </head>
 
   <body>
@@ -82,7 +84,7 @@
         
     </div><!-- /footer -->
     
-    <script src="static/js/bootstrap.min.js"></script>
+    <script src=""></script>
   <script type="text/javascript">
   if('127.0.0.1' != document.location.host && !_gaq){var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-922595-1']);

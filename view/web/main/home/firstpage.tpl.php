@@ -7,7 +7,7 @@
 
   </div>         
 <script>
-
+//为了方便，定义一些全局变量，哼哼
   color_names=["blue","green","red","yellow","orange",
         "pink","purple","lime","magenta","teal",
         "white","black"];
@@ -16,30 +16,34 @@
   mat_obj=[];
   mat_color_can_edit=false;
 
-$(document).bind('js-loaded-jquery-cookie',function(){
-    console.log('jsid-jquery-cookie Loaded!');
-    initMat();
-    cc=getColorsFromCookie();
-    if(cc.length==mat_color_init.length) {//数量一样多，就认定cookie的数据可用了
-      setColors(cc);
-      console.log('cookie colors:'+cc);
-    } else {
-      saveColorsToCookie();
-    }
+  $(function(){
+    laolin.wait.ready(function(){
     
-    $(".metbox").click(function () {
-      if(!mat_color_can_edit)return;
-      i=$(this).attr('mat_id');
-      oldColor=getColor(i);
-      ln=color_names.length;
-      n=(oldColor+1)%ln;
-      setColor(i,n);
-      saveColorsToCookie();
-      return true;
-    });
-
-});    
+      laolin.ui.showInfo('欢迎光临 LaoLin.com');
+      do{
+        initMat();
+        cc=getColorsFromCookie();
+        if(cc.length==mat_color_init.length) {//数量一样多，就认定cookie的数据可用了
+          setColors(cc);
+          console.log('cookie colors:'+cc);
+        } else {
+          saveColorsToCookie();
+        }
         
+        $(".metbox").click(function () {
+          if(!mat_color_can_edit)return;
+          i=$(this).attr('mat_id');
+          oldColor=getColor(i);
+          ln=color_names.length;
+          n=(oldColor+1)%ln;
+          setColor(i,n);
+          saveColorsToCookie();
+          return true;
+        });
+      }while(0);
+    });
+    laolin.wait.end('init');
+  });
   
   function initMat() {
     mat_obj=$(".metbox");
@@ -60,6 +64,9 @@ $(document).bind('js-loaded-jquery-cookie',function(){
       switch(e.which) {
         case 67://C，打开/停止变色功能
           mat_color_can_edit=!mat_color_can_edit;
+          laolin.ui.showInfo(mat_color_can_edit
+              ?"c:调色开关开启【单击】改变颜色<br/>【i】还原原色调<br/>【r】随机色"
+              :'c:调色开关（已关，再按一下c开启）');
           console.log('color edit '+mat_color_can_edit);
           break;
         case 73://I，还原原色调
