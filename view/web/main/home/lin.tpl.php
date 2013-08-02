@@ -5,3 +5,12 @@
                 } ?>
             
 </div></div>
+       
+<script>
+  $(function(){
+    laolin.wait.ready(function(){
+      //laolin.ui.showInfo('欢迎光临。',500);
+    });
+    laolin.wait.end('init');//laolin.wait.begin('init')在sharp-default中
+  });
+</script>

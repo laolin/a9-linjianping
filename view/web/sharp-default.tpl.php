@@ -25,10 +25,10 @@
       }
     </style>
 
-    <?php if( isset($css) && is_array( $css ) ): ?>
-        <?php foreach( $css as $cfile ): ?><link rel="stylesheet" type="text/css" href="static/css/<?=$cfile?>">
-        <?php endforeach; ?>
-    <?php endif; ?>
+    <?php if( isset($css) && is_array( $css ) )
+          foreach( $css as $cfile )
+            echo "<link href='static/css/$cfile' rel='stylesheet'>";
+    ?>
     
     <script src="static/js/jquery-1.8.0.min.js"></script>
     <script src="static/js/laolin.main.js"></script>
