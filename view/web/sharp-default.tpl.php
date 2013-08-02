@@ -33,7 +33,26 @@
     <?php endif; ?>
     
 
-    <!-- Fav and touch icons -->
+    <script src="static/js/laolin.main.js"></script>
+    <?php if( isset($js) && is_array( $js ) ): ?>
+        <script>$(function(){console.log('adding js files');
+        <?php foreach( $js as $jskey => $jfile ): 
+
+        if(strpos($jfile,'://')!=0)
+          echo "\nlaolin.fn.loadJs('jsid-{$jskey}','$jfile').onload=function(){
+            $(document).trigger('js-loaded-{$jskey}');  
+          };";
+          //(function(){$(document).trigger('js-loaded-{$jskey}');});";
+        else
+          echo "\nlaolin.fn.loadJs('jsid-{$jskey}','static/js/$jfile').onload=function(){
+            $(document).trigger('js-loaded-{$jskey}');  
+          };";
+        endforeach; ?>
+        
+        console.log('add js files ok.');
+        });
+      </script>
+  <?php endif; ?>
   </head>
 
   <body>
@@ -64,16 +83,6 @@
     </div><!-- /footer -->
     
     <script src="static/js/bootstrap.min.js"></script>
-    
-    <?php if( isset($js) && is_array( $js ) ): ?>
-        <?php foreach( $js as $jfile ): 
-
-        if(strpos($jfile,'://')!=0)
-          echo "<script type='text/javascript' src='$jfile' ></script>";
-        else
-          echo "<script type='text/javascript' src='static/js/$jfile' ></script>";
-        endforeach; ?>
-  <?php endif; ?>
   <script type="text/javascript">
   if('127.0.0.1' != document.location.host && !_gaq){var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-922595-1']);

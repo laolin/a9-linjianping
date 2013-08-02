@@ -15,28 +15,29 @@
   mat_color_init=[];
   mat_obj=[];
   mat_color_can_edit=false;
-  
-$(function(){
-  initMat();
-  cc=getColorsFromCookie();
-  if(cc.length==mat_color_init.length) {//数量一样多，就认定cookie的数据可用了
-    setColors(cc);
-    console.log('cookie colors:'+cc);
-  } else {
-    saveColorsToCookie();
-  }
-  
-  $(".metbox").click(function () {
-    if(!mat_color_can_edit)return;
-    i=$(this).attr('mat_id');
-    oldColor=getColor(i);
-    ln=color_names.length;
-    n=(oldColor+1)%ln;
-    setColor(i,n);
-    saveColorsToCookie();
-    return true;
-  });
-  
+
+$(document).bind('js-loaded-jquery-cookie',function(){
+    console.log('jsid-jquery-cookie Loaded!');
+    initMat();
+    cc=getColorsFromCookie();
+    if(cc.length==mat_color_init.length) {//数量一样多，就认定cookie的数据可用了
+      setColors(cc);
+      console.log('cookie colors:'+cc);
+    } else {
+      saveColorsToCookie();
+    }
+    
+    $(".metbox").click(function () {
+      if(!mat_color_can_edit)return;
+      i=$(this).attr('mat_id');
+      oldColor=getColor(i);
+      ln=color_names.length;
+      n=(oldColor+1)%ln;
+      setColor(i,n);
+      saveColorsToCookie();
+      return true;
+    });
+
 });    
         
   

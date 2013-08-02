@@ -25,13 +25,20 @@ class homeController extends appController
     $this->data['css'][]='laolin.metro.box.css';
     
     //firstpage采用theme-1,是深色底的，其他采用theme-2,是白底
-    $this->data['css'][]= g('a')=='firstpage'?'nav-theme-1.css':'nav-theme-2.css';
+    $this->data['css'][]= 'firstpage'==g('a')?'nav-theme-1.css':'nav-theme-2.css';
     
     //$this->data['js'][]='underscore-min.js';
     //$this->data['js'][]='backbone-min.js';
-    $this->data['js'][]='jquery.cookie.js';
+    if('firstpage'==g('a'))$this->data['js']['jquery-cookie']='jquery.cookie.js';
     //$this->data['js'][]='laolin.main.js';
     //$this->data['js'][]='laolin.router.js';
+    $this->data['js']['noty']='noty/jquery.noty.js';
+    $this->data['js'][]='noty/layouts/top.js';
+    $this->data['js'][]='noty/layouts/topCenter.js';
+    $this->data['js'][]='noty/layouts/center.js';
+    $this->data['js'][]='noty/layouts/bottomCenter.js';
+    $this->data['js'][]='noty/layouts/inline.js';
+    $this->data['js'][]='noty/themes/default.js';
   }
   
   function firstpage(){  
