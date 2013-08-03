@@ -14,6 +14,7 @@ class jgController extends appController
     $this->data=getAppDataDefault();
     $this->data['nav_items']=array();
     $this->data['nav_items']["?c=$c&a=firstpage"]='首页';
+    $this->data['nav_items']["?c=$c&a=help"]='帮助';
     
     $this->data['css'][]='laolin.metro.box.css';
     
@@ -33,8 +34,8 @@ class jgController extends appController
   }
   
   function firstpage(){  
-    $this->data['toptitle'] = '结构助手v0.01
-        作者:林建萍 同济大学建筑设计研究院（集团）有限公司';
+    $this->data['toptitle'] = '结构助手 
+        by:林建萍 同济大学建筑设计研究院（集团）有限公司';
       //error_reporting(E_ALL);
       //uses('home.data.php');
       
@@ -45,5 +46,15 @@ class jgController extends appController
   
   
 
+  function help(){  
+    $this->data['toptitle'] = '结构助手帮助 
+        by:林建萍 同济大学建筑设计研究院（集团）有限公司';
+      //error_reporting(E_ALL);
+      //uses('home.data.php');
+      
+      $txt='结构助手帮助';
+      $this->data['main_content']= $txt;
+    return render( $this->data );
+  } 
 }
   

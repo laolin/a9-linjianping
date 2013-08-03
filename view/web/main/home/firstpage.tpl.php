@@ -1,11 +1,7 @@
 <div class="col-lg-12">
-
-  <div class="mat-container">
 <?php
       echo $main_content ;
 ?>
-
-  </div>         
 <script>
 //为了方便，定义一些全局变量，哼哼
   color_names=["blue","green","red","yellow","orange",

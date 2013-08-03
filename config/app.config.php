@@ -29,6 +29,7 @@ switch($app_name) {
 
     $GLOBALS['config']['404_controller'] = 'jg';
     $GLOBALS['config']['404_action'] = 'firstpage';
+    break;
   case 'linjianping':
   default:
     $GLOBALS['config']['site_name'] = '林建萍';
