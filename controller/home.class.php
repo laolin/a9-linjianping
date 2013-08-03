@@ -39,6 +39,8 @@ class homeController extends appController
     $this->data['js']['noty-bottomCenter']='noty/layouts/bottomCenter.js';
     $this->data['js'][]='noty/layouts/inline.js';
     $this->data['js']['noty-themes']='noty/themes/default.js';
+    
+    $this->data['js'][]='app.js';
   }
   
   function firstpage(){  
