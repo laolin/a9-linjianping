@@ -46,10 +46,10 @@
             else
               echo "\n,'static/js/$jfile'";
           }?>
+  <?php endif; ?>
           ]);
           console.log('add js files ok.');
         });
-  <?php endif; ?>
     </script>
   </head>
 

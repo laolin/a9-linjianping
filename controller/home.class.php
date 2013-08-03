@@ -25,7 +25,7 @@ class homeController extends appController
     $this->data['css'][]='laolin.metro.box.css';
     
     //firstpage采用theme-1,是深色底的，其他采用theme-2,是白底
-    $this->data['css'][]= 'firstpage'==g('a')?'nav-theme-1.css':'nav-theme-2.css';
+    $this->data['css'][]= 'firstpage'==g('a')?'nav-theme-2.css':'nav-theme-2.css';
     
     //$this->data['js'][]='underscore-min.js';
     //$this->data['js'][]='backbone-min.js';
