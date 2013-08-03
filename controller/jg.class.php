@@ -11,9 +11,12 @@ class jgController extends appController
     parent::__construct();
     $c=g('c');
     $a=g('a');
+    $this->pageTitleTail=' | by:林建萍 同济大学建筑设计研究院（集团）有限公司';
     $this->data=getAppDataDefault();
+    $this->data['sitelink'] = './?c='.$c;
+    $this->data['sitename'] = c('site_name');
     $this->data['nav_items']=array();
-    $this->data['nav_items']["?c=$c&a=firstpage"]='首页';
+    $this->data['nav_items']["?c=$c&a=beamSect"]='梁截面计算';
     $this->data['nav_items']["?c=$c&a=help"]='帮助';
     
     $this->data['css'][]='laolin.metro.box.css';
@@ -32,30 +35,34 @@ class jgController extends appController
     $this->data['js'][]='noty/layouts/inline.js';
     $this->data['js']['noty-themes']='noty/themes/default.js';
     
-    $this->data['js'][]='app.js';
+    $this->data['js'][]='laolin.app.js';
+    $this->data['js'][]='laolin.app.jg.js';
   }
   
   function firstpage(){  
-    $this->data['toptitle'] = '结构助手 
-        by:林建萍 同济大学建筑设计研究院（集团）有限公司';
+    $this->data['toptitle'] = '首页'.$this->pageTitleTail;
       //error_reporting(E_ALL);
       //uses('home.data.php');
       
-      $txt='hello';
+      $txt='<h2>hello</h2>';
       $this->data['main_content']= $txt;
     return render( $this->data );
   } 
   
   
 
-  function help(){  
-    $this->data['toptitle'] = '结构助手帮助 
-        by:林建萍 同济大学建筑设计研究院（集团）有限公司';
+  function beamSect(){  
+    $this->data['toptitle'] = '梁截面计算'.$this->pageTitleTail;
       //error_reporting(E_ALL);
       //uses('home.data.php');
       
-      $txt='结构助手帮助';
+      $txt='梁截面计算';
       $this->data['main_content']= $txt;
+    return render( $this->data );
+  } 
+  function help(){  
+    $this->data['toptitle'] = '结构助手帮助'.$this->pageTitleTail;
+    //$this->data['main_content']= '';
     return render( $this->data );
   } 
 }

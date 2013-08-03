@@ -2,11 +2,12 @@
 <?php
       echo $main_content ;
 ?>
+
 <script>
 $(function(){
   laolin.wait.ready(function(){
    
-    laolin.ui.showInfo('欢迎光临老林结构助手-3',8000);
+    laolin.ui.showInfo('梁截面计算',8000);
   
   });
   laolin.wait.end('init');

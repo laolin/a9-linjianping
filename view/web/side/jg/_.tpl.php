@@ -1,4 +1,4 @@
-<div class="col-2 col-lg-2 col-sm-2">
+<div class="hidden-sm col-2 col-lg-2 col-sm-2">
 <div class="sidebar-nav">
             <ul class="nav nav-pills nav-stacked">
               <?php  foreach($nav_items as  $item => $v) {
