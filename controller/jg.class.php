@@ -16,7 +16,7 @@ class jgController extends appController
     $this->data['sitelink'] = './?c='.$c;
     $this->data['sitename'] = c('site_name');
     $this->data['nav_items']=array();
-    $this->data['nav_items']["?c=$c&a=beamSect"]='梁截面计算';
+    $this->data['nav_items']["?c=$c&a=beam_sect"]='梁截面计算';
     $this->data['nav_items']["?c=$c&a=help"]='帮助';
     
     $this->data['css'][]='laolin.metro.box.css';
@@ -51,7 +51,7 @@ class jgController extends appController
   
   
 
-  function beamSect(){  
+  function beam_sect(){  
     $this->data['toptitle'] = '梁截面计算'.$this->pageTitleTail;
       //error_reporting(E_ALL);
       //uses('home.data.php');
