@@ -52,8 +52,8 @@
         });
     </script>
   <!--[if lt IE 9]>
-    <script src="./assets/js/html5shiv.js"></script>
-    <script src="./assets/js/respond.min.js"></script>
+    <script src="static/js/forie/html5shiv.js"></script>
+    <script src="static/js/forie/respond.min.js"></script>
   <![endif]-->
   </head>
 
