@@ -64,7 +64,7 @@ var laolin={};
  
     laolin.wait.list={};
     laolin.wait.callback=[];
-    console.log('laolin.wait.loaded'); 
+    //console.log('laolin.wait.loaded'); 
     
     
   /// 调用一个url（这个URL返回js）并执行之，用于跨域ajax
