@@ -108,12 +108,12 @@ var laolin={};
 
   laolin.wait.begin=function(name,callback) {
     laolin.wait.list[name]=callback;
-    console.log('begin:'+name);
+    //console.log('begin:'+name);
   }
   laolin.wait.end=function(name) {
     callback=laolin.wait.list[name];
     delete laolin.wait.list[name];
-    console.log('end:'+name);
+    //console.log('end:'+name);
     if(callback)callback();//本项完成
     
     //检查是不是所有项目都完成了：
