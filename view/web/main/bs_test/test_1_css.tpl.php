@@ -345,6 +345,7 @@ color
 <div class="panel panel-danger">
   <div class="panel-heading">col order(push,pull) </div>
   <h1>这个为什么和例子的不一样？</h1>
+  <h1 class='alert alert-success'>更新新版的css文件后问题解决，一样了！</h1>
 <div class="row">
   <div class="col-lg-9 col-lg-push-3">9</div>
   <div class="col-lg-3 col-lg-pull-9">3</div>
@@ -353,6 +354,33 @@ color
 <div class='row'>
   <div class='col-lg-5 col-lg-push-7'>1,w=555555</div>
   <div class='col-lg-7 col-lg-pu11-5'>2,w=7 5</div>
+</div>
+<h3>col order：列重排序（显示的顺序和html出现的顺序 不一样)</h3>
+<ul>
+<li><code></code>
+<li>class <code>col-lg-push-*</code>可以往后推
+<li>class <code>col-lg-pull-*</code>可以往前拉推
+</ul>
+
+<div class='alert alert-success'>以下2例每列宽度2：</div>
+1.这是第1列 push-1的效果：
+<div class="row">
+  <div class="col-lg-2 col-lg-push-1"><button type="button" class="btn btn-block">1</button></div>
+  <div class="col-lg-2"><button type="button" class="btn btn-block">2</button></div>
+  <div class="col-lg-2"><button type="button" class="btn btn-block">3</button></div>
+  <div class="col-lg-2"><button type="button" class="btn btn-block">4</button></div>
+  <div class="col-lg-2"><button type="button" class="btn btn-block">5</button></div>
+  <div class="col-lg-2"><button type="button" class="btn btn-block">6</button></div>
+</div>
+
+2.这是第3列 pull-1的效果
+<div class="row">
+  <div class="col-lg-2"><button type="button" class="btn btn-block">1</button></div>
+  <div class="col-lg-2"><button type="button" class="btn btn-block">2</button></div>
+  <div class="col-lg-2 col-lg-pull-1"><button type="button" class="btn btn-block">3</button></div>
+  <div class="col-lg-2"><button type="button" class="btn btn-block">4</button></div>
+  <div class="col-lg-2"><button type="button" class="btn btn-block">5</button></div>
+  <div class="col-lg-2"><button type="button" class="btn btn-block">6</button></div>
 </div>
 
 </div>
@@ -449,12 +477,9 @@ color
 
 
 <script>
-$(function(){
   laolin.wait.ready(function(){
    
     laolin.ui.showInfo('CSS',600);
   });
-  laolin.wait.end('init');
-});
 </script>    
 </div>

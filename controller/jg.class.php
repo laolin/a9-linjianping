@@ -59,7 +59,7 @@ class jgController extends appController
       $txt='梁截面计算';
       $this->data['main_content']= $txt;
     return render( $this->data );
-  } 
+  }
   function help(){  
     $this->data['toptitle'] = '结构助手帮助'.$this->pageTitleTail;
     //$this->data['main_content']= '';

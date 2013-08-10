@@ -29,13 +29,14 @@
       }
      </style>
 
-   
-    <script src="static/js/jquery-1.8.0.min.js"></script>
-    <script src="static/js/laolin.main.js"></script>
+    
+    <!--sc ript src="static/js/jquery-1.8.0.min.js"></sc ript-->
+    <script><?php @include_once( dirname(__FILE__) ) . DS . 'laolin.main.js';?></script>
     <script>
-        $(function(){
+    laolin.wait.begin('wait-jq');
+    laolin.wait.js(['static/js/jquery-1.8.0.min.js'],function(){
+          laolin.wait.begin('wait-js');
           console.log('adding js files');
-          laolin.wait.begin('init');
           laolin.wait.js(['static/js/bootstrap.min.js'
             , 'static/js/laolin.ui.js'
 
@@ -49,7 +50,9 @@
   <?php endif; ?>
           ]);
           console.log('add js files ok.');
-        });
+          laolin.wait.end('wait-js'); 
+    });          
+    laolin.wait.end('wait-jq');
     </script>
   <!--[if lt IE 9]>
     <script src="static/js/forie/html5shiv.js"></script>

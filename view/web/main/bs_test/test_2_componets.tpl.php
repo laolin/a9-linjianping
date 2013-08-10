@@ -4,6 +4,9 @@
 ?>
 
 <!-- LIST GROPUP    -->  
+    <h3 id=""> panel With list groups</h3>
+    <p>Easily include full-width <a href="#list-group">list groups</a> within any panel.</p>
+
 <div class="panel">
   <div class="panel-heading">LIST GROPUP 2 </div>
   a af adf asdf dsa fdsaf asd fa
@@ -16,11 +19,8 @@
 </div>
 
 
-
-    <h1>这个和例子的为什么不一样</h1>
-    <h3 id="panels-list-group">With list groups</h3>
-    <p>Easily include full-width <a href="#list-group">list groups</a> within any panel.</p>
-    <div class="bs-example">
+    
+     
       <div class="panel  panel-danger">
         <!-- Default panel contents -->
         <div class="panel-heading">Panel heading</div>
@@ -35,7 +35,7 @@
           <li class="list-group-item">Vestibulum at eros</li>
         </ul>
       </div>
-    </div>
+      
 
 
 
@@ -43,6 +43,9 @@
 
 <div class="panel">
   <div class="panel-heading">LIST GROPUP </div>
+  LIST GROPUP现在不能随便放在panel里了，放在里面会被当做同一级别的列表，(见头顶上2个例子)，对我们这个例子显示效果就乱了
+</div>
+
   <div class='row'><div class='col-lg-4'>
 <ul class="list-group">
   <li class="list-group-item">1(w=4) Cras justo odio</li>
@@ -110,12 +113,12 @@
   
   </div></div>
 
-</div>
+
 
 <!-- Progress  -->  
 <div class="panel  panel-danger">
   <div class="panel-heading">Progress </div>
-  <strong>IE9 不支持!</strong>
+  <strong>IE8也基本支持</strong>
   
   <div class="progress progress-striped active ">
     <div class="progress-bar" style="width: 60%;"></div>
@@ -449,12 +452,9 @@ btn-group:
 
 <h2>说明：</h2>
 <script>
-$(function(){
   laolin.wait.ready(function(){
    
     laolin.ui.showInfo('梁截面计算',600);
   });
-  laolin.wait.end('init');
-});
 </script>    
 </div>

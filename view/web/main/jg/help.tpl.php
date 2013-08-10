@@ -9,13 +9,10 @@
 <li>梁截面，弯矩->计算 配筋</li>
 </ol>
 <script>
-$(function(){
   laolin.wait.ready(function(){
    
     laolin.ui.showInfo('欢迎光临老林结构助手-2',8000);
   
   });
-  laolin.wait.end('init');
-});
 </script>    
 </div>

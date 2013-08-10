@@ -4,6 +4,24 @@
 ?>
 <h2>JavaScript</h2>
 
+<!-- Carousel    -->  
+<div class="panel panel-info">
+  <div class="panel-heading"> Carousel   </div>
+  加入代码，以免点击后会跳到页头<pre>
+$(function(){   
+  $('.bs-docs-container [href=#]').click(function (e) {
+    e.preventDefault()
+  })
+});
+  </pre>
+<script>
+laolin.wait.ready(function(){
+  $('[href=#]').click(function (e) {
+    e.preventDefault()
+  })
+});
+</script>
+</div>
 
 <!-- Carousel    -->  
 <div class="panel panel-info">
@@ -86,13 +104,14 @@ aasdfasdf 按右边的关闭按钮
   </div>
 
 <a class="close" data-dismiss="alert" href="#">&times;</a>
-<h2>为什么popover显示不正常，
-<a href="javascript:$('[data-toggle=popover]').popover({container: 'body'})"
-data-toggle="tooltip"
-title="$('[data-toggle=popover]').popover({container: 'body'})"
->
-点击这里执行一下</code>$('[data-toggle=popover]').popover({container: 'body'})</code>才会正常显示。
-</a></h2>
+<h2>需要在页面中加入以下代码</h2>
+        <pre>$(function(){$('[data-toggle=popover]').popover()})</pre>
+        <script> 
+        laolin.wait.ready(function(){
+        $('[data-toggle=popover]').popover()
+        
+        })
+        </script>
 
     <h3>Live demo</h3>
     <div class="bs-example" style="padding-bottom: 24px;">
@@ -112,7 +131,7 @@ title="$('[data-toggle=popover]').popover({container: 'body'})"
         <button type="button" class="btn btn-default" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-original-title="" title="">
           Popover on right
         </button>
-        
+
         
 </div>
 
@@ -124,14 +143,13 @@ title="$('[data-toggle=popover]').popover({container: 'body'})"
 <ul>
 <li>Tooltips <code>data-toggle="tooltip"</code>
 </ul>
-
-<h2>为什么tooltip显示不正常，
-<a href="javascript:$('[data-toggle=tooltip]').tooltip({container: 'body'})"
-data-toggle="tooltip"
-title="$('[data-toggle=tooltip]').tooltip({container: 'body'})"
->
-点击这里执行一下</code>$('[data-toggle=tooltip]').tooltip({container: 'body'})</code>才会正常显示。
-</a></h2>
+<h2>需要在页面中加入以下代码</h2>
+<pre>$(function(){$('[data-toggle=tooltip]').tooltip()})</pre>
+<script> 
+        laolin.wait.ready(function(){
+        $('[data-toggle=tooltip]').tooltip()        
+        })
+        </script>
 
 <a href="#" data-toggle="tooltip" title="first tooltip">Hover over me</a>
 
@@ -142,7 +160,6 @@ title="$('[data-toggle=tooltip]').tooltip({container: 'body'})"
         <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Tooltip on right">Tooltip on right</button>
 
 <button type="button" class="btn btn-info" data-trigger='click' data-toggle="tooltip" data-placement="top" title="Tooltip on top">Click for Tooltip on top</button>
-
 </div>
 
 
@@ -208,12 +225,10 @@ title="$('[data-toggle=tooltip]').tooltip({container: 'body'})"
 
 
 <script>
-$(function(){
+
   laolin.wait.ready(function(){
    
     laolin.ui.showInfo('JavaScript',600);
   });
-  laolin.wait.end('init');
-});
 </script>    
 </div>

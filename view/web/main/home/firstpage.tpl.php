@@ -12,9 +12,7 @@
   mat_obj=[];
   mat_color_can_edit=false;
 
-  $(function(){
-    laolin.wait.ready(function(){
-    
+    laolin.wait.ready(function(){    
       laolin.ui.showInfo('欢迎光临 LaoLin.com');
       do{
         initMat();
@@ -38,8 +36,6 @@
         });
       }while(0);
     });
-    laolin.wait.end('init');
-  });
   
   function initMat() {
     mat_obj=$(".metbox");
