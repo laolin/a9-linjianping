@@ -128,59 +128,56 @@ var laolin={};
   
   /**
     laolin.wait.js和laolin.wait.css:
-    的具体实现代码都在laolin.wait.files(filetype,filenames,callback_or_eventnames)里。
+    的具体实现代码都在laolin.wait.files(filetype,filenames,callbacks)里。
     @param filetype :支持'css'或'js'
     @param filenames : 一个文件名或文件名数组
       加载指定的一个文件或一系列文件。
       每个文件名会用laolin.wait.begin登记一项等待事件，
       然后用laolin.wait.loader.loadJs/loadCss加载文件，
       返回的dom对象的onload会调用laolin.wait.end来结束前面登记的事件。
-    @param callback_or_eventnames : 可选，一个回调函数或字符串或这两种的数组
+    @param callbacks : 可选，一个回调函数或字符串或这两种的数组
       以下4种情况：
-      如果filenames是数组， callback_or_eventnames 也是数组：
-        分别调用laolin.wait.file(type,filenames[n],callback_or_eventnames[n])
-        callback_or_eventnames 数组太长的部分被忽略，太短时则filenames后面几项就没有 callback_or_eventnames 项。
-      如果filenames是数组， callback_or_eventnames 不是数组：
-        分别调用laolin.wait.file(type,filenames[n],callback_or_eventnames)
-        即所有的filenames[n]项均对应同一个 callback_or_eventnames 。
-      如果filenames不是数组， callback_or_eventnames 也不是数组：
-        则调用一次laolin.wait.file(type,filenames,callback_or_eventnames)就搞定了
-      如果filenames不是数组，而 callback_or_eventnames 是数组：会运行出错。
+      如果filenames是数组， callbacks 也是数组：
+        分别调用laolin.wait.file(type,filenames[n],callbacks[n])
+        callbacks 数组太长的部分被忽略，太短时则filenames后面几项就没有 callbacks 项。
+      如果filenames是数组， callbacks 不是数组：
+        分别调用laolin.wait.file(type,filenames[n],callbacks)
+        即所有的filenames[n]项均对应同一个 callbacks 。
+      如果filenames不是数组， callbacks 也不是数组：
+        则调用一次laolin.wait.file(type,filenames,callbacks)就搞定了
+      如果filenames不是数组，而 callbacks 是数组：会运行出错。
   */
-  laolin.wait.js=function(filenames,callback_or_eventnames) {
-    laolin.wait.files('js',filenames,callback_or_eventnames);
+  laolin.wait.js=function(filenames,callbacks) {
+    laolin.wait.files('js',filenames,callbacks);
   }
-  laolin.wait.css=function(filenames,callback_or_eventnames) {
-    laolin.wait.files('css',filenames,callback_or_eventnames);
+  laolin.wait.css=function(filenames,callbacks) {
+    laolin.wait.files('css',filenames,callbacks);
   }
-  laolin.wait.files=function(filetype,filenames,callback_or_eventnames) {
+  laolin.wait.files=function(filetype,filenames,callbacks) {
     if(Object.prototype.toString.call(filenames)==="[object Array]") {
-      a_list = Object.prototype.toString.call(callback_or_eventnames)==="[object Array]"?
-          callback_or_eventnames:undefined;
+      a_list = Object.prototype.toString.call(callbacks)==="[object Array]"?
+          callbacks:undefined;
       for( var i=0; i<filenames.length; i++) {
-        laolin.wait.file(filetype, filenames[i], a_list?a_list[i]:callback_or_eventnames);
+        laolin.wait.file(filetype, filenames[i], a_list?a_list[i]:callbacks);
       };
     } else {
-      laolin.wait.file(filetype,filenames,callback_or_eventnames);
+      laolin.wait.file(filetype,filenames,callbacks);
     }
   }
   
   /**
-  laolin.wait.file (filetype,filename,callback_or_eventname)
+  laolin.wait.file (filetype,filename,callback)
   @param filetype :支持'css'或'js'
   @param filename :要加载的文件路径
-  @param callback_or_eventname ：几种情况：
-    1,未定义：忽略
-    2,函数：完成后调用之上述登记事件完成时的回调函数，
-    3,其他情况callback_or_eventname转成字符串（作为消息名），触发一条消息
+  @param callback ：几种情况：
+    1,函数：完成后调用之上述登记事件完成时的回调函数
+    2,未定义或其他：忽略
   */
-  laolin.wait.file=function(filetype,filename,callback_or_eventname) {
-    if("function"==typeof(callback_or_eventname)){
-      f=callback_or_eventname;
-    } else if("undefined"==typeof(callback_or_eventname)){
-      f=undefined;
+  laolin.wait.file=function(filetype,filename,callback) {
+    if("function"==typeof(callback)){
+      f=callback;
     } else {
-      f=function(){$(document).trigger(''+callback_or_eventname)};
+      f=undefined;
     }
     laolin.wait.begin(filetype+':'+filename,f);
     loader=laolin.wait.loader.loadJs;//默认js
