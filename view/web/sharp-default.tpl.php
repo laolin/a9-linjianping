@@ -30,8 +30,11 @@
      </style>
 
     
-    <!--sc ript src="static/js/jquery-1.8.0.min.js"></sc ript-->
-    <script><?php @include_once( dirname(__FILE__) ) . DS . 'laolin.main.js';?></script>
+    <script><?php 
+    if( file_exists(dirname(__FILE__) ) . DS . 'laolin.main.min.js')
+      @include_once( dirname(__FILE__) ) . DS . 'laolin.main.min.js';
+    else
+      @include_once( dirname(__FILE__) ) . DS . 'laolin.main.js';?></script>
     <script>
     laolin.wait.begin('wait-jq');
     laolin.wait.js(['static/js/jquery-1.8.0.min.js'],function(){
