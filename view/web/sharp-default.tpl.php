@@ -30,14 +30,19 @@
      </style>
 
     
-    <script><?php 
-    if( file_exists(dirname(__FILE__) ) . DS . 'laolin.main.min.js')
-      @include_once( dirname(__FILE__) ) . DS . 'laolin.main.min.js';
+    <script><?php
+    if( file_exists(dirname(__FILE__)  . DS . 'laolin.main.min.js'))
+      include_once( dirname(__FILE__)  . DS . 'laolin.main.min.js');
     else
-      @include_once( dirname(__FILE__) ) . DS . 'laolin.main.js';?></script>
-    <script>
+      include_once( dirname(__FILE__)  . DS . 'laolin.main.js');?>
+    ;
     laolin.wait.begin('wait-jq');
     laolin.wait.js(['static/js/jquery-1.8.0.min.js'],function(){
+      laolin.wait.end('wait-jq');
+      //IE 8这句可能会执行不到，假定2秒内JQ加载完毕
+      //所以下面有一句setTimeout，用于 2秒后强制结束'wait-jq'
+    });
+    laolin.wait.ready(function(){
           laolin.wait.begin('wait-js');
           console.log('adding js files');
           laolin.wait.js(['static/js/bootstrap.min.js'
@@ -51,15 +56,13 @@
               echo "\n,'static/js/$jfile'";
           }?>
   <?php endif; ?>
-          ]);
+          ],function(){laolin.wait.end('wait-js');} );
           console.log('add js files ok.');
-          laolin.wait.end('wait-js'); 
-    });          
-    laolin.wait.end('wait-jq');
+    });
     </script>
   <!--[if lt IE 9]>
-    <script src="static/js/forie/html5shiv.js"></script>
-    <script src="static/js/forie/respond.min.js"></script>
+    <script>setTimeout(function(){laolin.wait.end('wait-jq');},2000);
+    laolin.wait.ready(function(){laolin.app.fn.oldIE()});</script>
   <![endif]-->
   </head>
 

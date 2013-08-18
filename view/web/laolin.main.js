@@ -65,7 +65,7 @@ var laolin={};
     laolin.wait.list={};
     laolin.wait.callback=[];
     //console.log('laolin.wait.loaded'); 
-    
+  laolin.wait.jsJQFailN=0;  
     
   /// 调用一个url（这个URL返回js）并执行之，用于跨域ajax
   /// 参考baidu自己各站点跨域ajax的方法的
@@ -108,13 +108,13 @@ var laolin={};
 
   laolin.wait.begin=function(name,callback) {
     laolin.wait.list[name]=callback;
-    //console.log('begin:'+name);
+    console.log('wait.begin:'+name);
   }
   laolin.wait.end=function(name) {
     callback=laolin.wait.list[name];
-    delete laolin.wait.list[name];
-    //console.log('end:'+name);
+    console.log('wait.end:'+name);
     if(callback)callback();//本项完成
+    delete laolin.wait.list[name];
     
     //检查是不是所有项目都完成了：
     if(laolin.wait.isReady()) {
@@ -126,6 +126,29 @@ var laolin={};
     }
   }
   
+  //通过
+  laolin.wait.jsByJQ=function (iFrom,jsfiles,callback){
+    if(0==iFrom){
+      $.ajaxSetup({cache: true});
+    }
+    if(jsfiles.length<=iFrom){
+      $.ajaxSetup({cache: false});
+      callback&&callback();
+      return;
+    }
+    console.log('JQjs '+iFrom+':'+jsfiles[iFrom]);
+    $.getScript(jsfiles[iFrom]).done(function(){
+        laolin.wait.jsJQFailN=0;
+        laolin.wait.jsByJQ(iFrom+1,jsfiles,callback);
+      }).fail(function(){
+        if(laolin.wait.jsJQFailN++ > 10){
+          console.log('JQjsFail '+iFrom+':'+jsfiles[iFrom]);
+          iFrom++;//失败太多次，跳至下一个文件
+        }
+        setTimeout(function(){laolin.wait.jsByJQ(iFrom,jsfiles,callback)},1000)
+      });
+  }
+
   /**
     laolin.wait.js和laolin.wait.css:
     的具体实现代码都在laolin.wait.files(filetype,filenames,callbacks)里。
@@ -148,7 +171,14 @@ var laolin={};
       如果filenames不是数组，而 callbacks 是数组：会运行出错。
   */
   laolin.wait.js=function(filenames,callbacks) {
-    laolin.wait.files('js',filenames,callbacks);
+    if('undefined'==typeof($))
+      laolin.wait.files('js',filenames,callbacks);
+    else{
+      if(Object.prototype.toString.call(filenames)==="[object Array]")
+        laolin.wait.jsByJQ(0,filenames,callbacks);
+      else
+        laolin.wait.jsByJQ(0,[filenames],callbacks);
+    }
   }
   laolin.wait.css=function(filenames,callbacks) {
     laolin.wait.files('css',filenames,callbacks);
@@ -184,17 +214,15 @@ var laolin={};
     if('css'==filetype) {
       loader=laolin.wait.loader.loadCss;//css
     }
-    loader('',filename).onload=function(){
-      laolin.wait.end(filetype+':'+filename);
-    };
+    loader('',filename).onload=function(){laolin.wait.end(filetype+':'+filename);};
   }
   laolin.wait.isReady=function() {
-    for(somethn in laolin.wait.list ){return false;}
+    for(x in laolin.wait.list ){return false;}
     return true;
   }
   laolin.wait.ready=function(callback) {
     if(laolin.wait.isReady())callback();
     else laolin.wait.callback.push(callback);
   }
-  window.$=laolin.wait.ready;//临时代替一下jQuery的$，jQuery加载会自动被覆盖回去
+  //window.$=laolin.wait.ready;//临时代替一下jQuery的$，jQuery加载会自动被覆盖回去
 })(laolin);
