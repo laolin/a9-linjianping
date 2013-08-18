@@ -60,7 +60,7 @@ var laolin={};
 
 (function(laolin){
   laolin.wait={};
-  laolin.data={};
+  laolin.data={};laolin.data.L=[];laolin.data.C=[];
   laolin.wait.loader={};
  
   laolin.wait.list={};
@@ -108,34 +108,45 @@ var laolin={};
 
   laolin.wait.begin=function(name,callback) {
     laolin.wait.list[name]=callback;
-    console.log('wait.begin:'+name);
+    console.log('B:'+name);
   }
   laolin.wait.end=function(name) {
     callback=laolin.wait.list[name];
-    console.log('wait.end:'+name);
+    console.log('E:'+name);
     if(callback)callback();//本项完成
+    laolin.data.C.push(laolin.wait.list);
     delete laolin.wait.list[name];
     
     //检查是不是所有项目都完成了：
     if(laolin.wait.isReady()) {
-      console.log('laolin.wait.isReady');
-      for( var i=0; i<laolin.wait.callback.length; i++) {
-        laolin.wait.callback[i]();
+      console.log('R!');
+    laolin.data.L.push(laolin.wait.callback);
+      //这四行是一批都马上执行，但有可能后面的代码要靠前面的代码异步执行完毕（比如加载js）
+      //所以可能有问题
+      //for( var i=0; i<laolin.wait.callback.length; i++) {
+      //  laolin.wait.callback[i]();
+      //}
+      //laolin.wait.callback=[];
+      //先增加一个等待，然后执行完callback[0]后马上结束这个等待。
+      //如果callback[0]里没有新的等待则会顺序执行下一个callback，
+      //如果在执行callback[0]有新的等待，则下一个callback会在这些新的等待完成后再执行
+      //实现确保执行完一个callback再执行下一个callback
+      if(laolin.wait.callback.length>0){
+        laolin.wait.begin('_isReady');
+        laolin.wait.callback.shift()();//把第一个里的代码移出，并执行
+        laolin.wait.end('_isReady');
       }
-      laolin.wait.callback=[];
     }
   }
   laolin.wait.endAll=function() {
-    for(x in laolin.wait.list ){
-      c=laolin.wait.list[x];
-      if(c)c();
-    }
-    for( var i=0; i<laolin.wait.callback.length; i++) {
-      laolin.wait.callback[i]();
-    }
-    laolin.wait.list={};
-    laolin.wait.callback=[];
-    return true;
+    w=[];
+    //由于wait.end函数执行中可能会改变（新增加）wait.list，
+    //所以要先把wait.list全保存好，然后再end这些保存好的wait.list，
+    //免得后面新增加的wait.list被一起endAll掉了
+    for(x in laolin.wait.list )
+      w.push(x);
+    for(x in w )
+      laolin.wait.end(w[x]);
   }
   
   //通过
@@ -148,13 +159,13 @@ var laolin={};
       callback&&callback();
       return;
     }
-    console.log('JQjs '+iFrom+':'+jsfiles[iFrom]);
+    console.log('jQs'+iFrom+':'+jsfiles[iFrom]);
     $.getScript(jsfiles[iFrom]).done(function(){
         laolin.data.jsFail=0;
         laolin.wait.jsByJQ(iFrom+1,jsfiles,callback);
       }).fail(function(){
         if(laolin.data.jsFail++ > 10){
-          console.log('JQjsFail '+iFrom+':'+jsfiles[iFrom]);
+          console.log('JQsFail'+iFrom+':'+jsfiles[iFrom]);
           laolin.data.jsFail=0;
           iFrom++;//失败太多次，跳至下一个文件
         }

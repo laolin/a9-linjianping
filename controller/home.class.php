@@ -24,12 +24,12 @@ class homeController extends appController
     $this->data['css'][]='comm-box.css';
     $this->data['css'][]='laolin.metro.box.css';
     
-    //firstpage采用theme-1,是深色底的，其他采用theme-2,是白底
-    $this->data['css'][]='firstpage'==g('a')?'nav-theme-2.css':'nav-theme-2.css';
+    // theme-1,是深色底的， theme-2,是白底
+    $this->data['css'][]='nav-theme-2.css';
     
     //$this->data['js'][]='underscore-min.js';
     //$this->data['js'][]='backbone-min.js';
-    if('firstpage'==g('a'))$this->data['js']['jquery-cookie']='jquery.cookie.js';
+    $this->data['js']['jquery-cookie']='jquery.cookie.js';
     //$this->data['js'][]='laolin.router.js';
     $this->data['js']['noty']='noty/jquery.noty.js';
     $this->data['js'][]='noty/layouts/top.js';

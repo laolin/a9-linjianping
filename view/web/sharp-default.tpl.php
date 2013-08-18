@@ -39,13 +39,12 @@
       include_once( dirname(__FILE__)  . DS . 'laolin.main.min.js');
     else
       include_once( dirname(__FILE__)  . DS . 'laolin.main.js');?>
-    ;laolin.data.static='<?php echo $staticpath; ?>';
+    ;laolin.data.staticpath='<?php echo $staticpath; ?>';
     laolin.wait.begin('wait-jq');
-    laolin.wait.js(['http://lib.sinaapp.com/js/jquery/1.8/jquery.min.js'],function(){
-      laolin.wait.end('wait-jq');
+    laolin.wait.js(['http://lib.sinaapp.com/js/jquery/1.8/jquery.min.js']);
       //IE 8这句可能会执行不到，假定2秒内JQ加载完毕
-      //所以下面有一句setTimeout，用于 2秒后强制结束'wait-jq'
-    });
+      //所以下面会有一句专门给IE8运行的setTimeout，用于 2秒后强制结束'wait-jq'
+    laolin.wait.end('wait-jq');
     laolin.wait.ready(function(){
           laolin.wait.begin('wait-js');
           console.log('adding js files');
@@ -64,9 +63,25 @@
           console.log('add js files ok.');
     });
     </script>
+  <!--[if lt IE 8]>
+    <script>
+      laolin.data.IE7=1;
+    </script>
+  <![endif]-->
   <!--[if lt IE 9]>
-    <script>setTimeout(function(){laolin.wait.endAll();},2000);
-    laolin.wait.ready(function(){laolin.app.fn.oldIE()});</script>
+    <script>
+    jQTest=100;
+    function jQReadyTest(){
+      console.log('jQReadyTest:'+jQTest);
+      if(jQTest>9999||'undefined'!=typeof($)){
+        laolin.wait.endAll();
+        //要来两个ready,第二次ready才会加载好laolin.app
+        laolin.wait.ready(function(){laolin.wait.ready(function(){laolin.app.fn.oldIE()})});
+      }
+      else setTimeout(jQReadyTest,jQTest+=100);
+    }
+    setTimeout(jQReadyTest,jQTest+=100);
+    </script>
   <![endif]-->
   </head>
 
