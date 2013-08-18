@@ -1,5 +1,7 @@
 <?php
   function getAppDataDefault() {
+    $data['staticpath'] = $_SERVER['HTTP_HOST']=='127.0.0.1'?
+        'static':'http://static.laolin.info/static';
     $data['sitelink'] = './';
     $data['sitename'] = c('site_name');
     $data['toptitle'] = '欢迎光临';

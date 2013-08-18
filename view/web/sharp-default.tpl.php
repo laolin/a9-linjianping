@@ -8,10 +8,14 @@
     <meta name="author" content="LaoLin">
 
     <!-- Le styles -->
-    <link href="static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo $staticpath; ?>/css/bootstrap.min.css" rel="stylesheet">
     <?php if( isset($css) && is_array( $css ) )
-          foreach( $css as $cfile )
-            echo "<link href='static/css/$cfile' rel='stylesheet'>";
+          foreach( $css as $cfile ) {
+            if(strpos($cfile,'://')!=0)
+              echo "<link href='$cfile' rel='stylesheet'>";
+            else
+              echo "<link href='$staticpath/css/$cfile' rel='stylesheet'>";
+          }
     ?>
     <style type="text/css">
         body {
@@ -37,7 +41,7 @@
       include_once( dirname(__FILE__)  . DS . 'laolin.main.js');?>
     ;
     laolin.wait.begin('wait-jq');
-    laolin.wait.js(['static/js/jquery-1.8.0.min.js'],function(){
+    laolin.wait.js(['http://lib.sinaapp.com/js/jquery/1.8/jquery.min.js'],function(){
       laolin.wait.end('wait-jq');
       //IE 8这句可能会执行不到，假定2秒内JQ加载完毕
       //所以下面有一句setTimeout，用于 2秒后强制结束'wait-jq'
@@ -45,15 +49,15 @@
     laolin.wait.ready(function(){
           laolin.wait.begin('wait-js');
           console.log('adding js files');
-          laolin.wait.js(['static/js/bootstrap.min.js'
-            , 'static/js/laolin.ui.js'
+          laolin.wait.js(['<?php echo $staticpath; ?>/js/bootstrap.min.js'
+            , '<?php echo $staticpath; ?>/js/laolin.ui.js'
 
     <?php if( isset($js) && is_array( $js ) ): ?>
           <?php foreach( $js as $jskey => $jfile ){ 
             if(strpos($jfile,'://')!=0)
               echo "\n,'$jfile'";
             else
-              echo "\n,'static/js/$jfile'";
+              echo "\n,'$staticpath/js/$jfile'";
           }?>
   <?php endif; ?>
           ],function(){laolin.wait.end('wait-js');} );
