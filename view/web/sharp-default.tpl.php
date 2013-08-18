@@ -65,7 +65,7 @@
     });
     </script>
   <!--[if lt IE 9]>
-    <script>setTimeout(function(){laolin.wait.end('wait-jq');},2000);
+    <script>setTimeout(function(){laolin.wait.endAll();},2000);
     laolin.wait.ready(function(){laolin.app.fn.oldIE()});</script>
   <![endif]-->
   </head>

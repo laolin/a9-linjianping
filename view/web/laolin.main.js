@@ -125,6 +125,18 @@ var laolin={};
       laolin.wait.callback=[];
     }
   }
+  laolin.wait.endAll=function() {
+    for(x in laolin.wait.list ){
+      c=laolin.wait.list[x];
+      if(c)c();
+    }
+    for( var i=0; i<laolin.wait.callback.length; i++) {
+      laolin.wait.callback[i]();
+    }
+    laolin.wait.list={};
+    laolin.wait.callback=[];
+    return true;
+  }
   
   //通过
   laolin.wait.jsByJQ=function (iFrom,jsfiles,callback){
