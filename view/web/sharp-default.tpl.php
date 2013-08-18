@@ -39,7 +39,7 @@
       include_once( dirname(__FILE__)  . DS . 'laolin.main.min.js');
     else
       include_once( dirname(__FILE__)  . DS . 'laolin.main.js');?>
-    ;
+    ;laolin.data.static='<?php echo $staticpath; ?>';
     laolin.wait.begin('wait-jq');
     laolin.wait.js(['http://lib.sinaapp.com/js/jquery/1.8/jquery.min.js'],function(){
       laolin.wait.end('wait-jq');

@@ -60,12 +60,12 @@ var laolin={};
 
 (function(laolin){
   laolin.wait={};
+  laolin.data={};
   laolin.wait.loader={};
  
-    laolin.wait.list={};
-    laolin.wait.callback=[];
-    //console.log('laolin.wait.loaded'); 
-  laolin.wait.jsJQFailN=0;  
+  laolin.wait.list={};
+  laolin.wait.callback=[];
+  laolin.data.jsFail=0;
     
   /// 调用一个url（这个URL返回js）并执行之，用于跨域ajax
   /// 参考baidu自己各站点跨域ajax的方法的
@@ -150,11 +150,12 @@ var laolin={};
     }
     console.log('JQjs '+iFrom+':'+jsfiles[iFrom]);
     $.getScript(jsfiles[iFrom]).done(function(){
-        laolin.wait.jsJQFailN=0;
+        laolin.data.jsFail=0;
         laolin.wait.jsByJQ(iFrom+1,jsfiles,callback);
       }).fail(function(){
-        if(laolin.wait.jsJQFailN++ > 10){
+        if(laolin.data.jsFail++ > 10){
           console.log('JQjsFail '+iFrom+':'+jsfiles[iFrom]);
+          laolin.data.jsFail=0;
           iFrom++;//失败太多次，跳至下一个文件
         }
         setTimeout(function(){laolin.wait.jsByJQ(iFrom,jsfiles,callback)},1000)
