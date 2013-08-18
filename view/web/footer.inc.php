@@ -46,8 +46,8 @@
 &copy; 
 <?php
 echo $_SERVER['HTTP_HOST']=='laolin.com'?
-"<a href='http://laolin.com'>LaoLin</a> ":
-"<a href='http://linjianping.com'>林建萍</a> ";
- echo date('Y')?>
+"<a href='http://laolin.com'>LaoLin</a> ".date('Y')." 沪ICP备06043855号":
+"<a href='http://linjianping.com'>林建萍</a> ".date('Y');
+ ?>
 </div>
 </div>
