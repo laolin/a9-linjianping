@@ -10,12 +10,20 @@
     支持参数a列表：
     <ol>
       <li>
-      a=test<br/>
-        默认,用来测试api是否正常运作
+        <p><code>a=test</code>
+        <p>默认,用来测试api是否正常运作
       </li>
       <li>
-      a=wp<br/>
-        返回wordpress文章或页面<b>摘要</b>的API
+        <p> <code>a=wave</code>
+        <p>功能：获取地震波数据
+        <p>用法：<code>?c=api&a=wave&b=wavename&type=[json|txt]&js=jsFuntion</code>
+        <p>参数：b=地震波名，
+        <p>type=[json|txt|js]返回json数据（默认），或txt返回地震波数字文本文件
+        <p>js=jsonp函数名（指定js后type参数无效，总是返回jsonp代码）
+      </li>
+      <li>
+        <p><code>a=wp</code>
+        <p>返回wordpress文章或页面<b>摘要</b>的API
         <ol>
           <li>
             b=bycat(?c=api&a=wp&b=bycat&cat=72,77&npost=2)每一指定cat类显示npost篇文章 

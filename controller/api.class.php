@@ -38,6 +38,10 @@ class apiController extends appController
     $data['data']='LaoLinAPI is ready.';
     echoRestfulData($data);
   }
+  function wave() {
+    uses('api.wave.php');
+    return apiWaveMain();
+  }
   function wp() {
     //error_reporting(E_ALL);
     $b=v('b');
