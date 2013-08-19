@@ -17,7 +17,7 @@
         <p> <code>a=wave</code>
         <p>功能：获取地震波数据
         <p>用法：<code>?c=api&a=wave&b=wavename&type=[json|txt]&js=jsFuntion</code>
-        <p>参数：b=地震波名，
+        <p>参数：b=地震波名，(b=_list：列出所有地震波名）
         <p>type=[json|txt|js]返回json数据（默认），或txt返回地震波数字文本文件
         <p>js=jsonp函数名（指定js后type参数无效，总是返回jsonp代码）
       </li>
