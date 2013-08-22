@@ -1,6 +1,5 @@
 <?php 
 
-$app_name=g('c');
 if(!$app_name) {
   $app_name=g('c');
 }
