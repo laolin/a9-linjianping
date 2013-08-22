@@ -83,7 +83,7 @@ notyId=0;
 if('127.0.0.1'==document.location.host)
   apiScript='./';
 else
-  apiScript='http://api.laolin.com/';
+  apiScript='http://api.laolin.com/v1.0/';
 
 apiWave=apiScript+'?c=api&a=wave&js=getWave&b=';
 apiWaveList=apiScript+'?c=api&a=wave&b=_list&js=getWaveList';
