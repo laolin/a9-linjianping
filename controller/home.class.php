@@ -40,6 +40,7 @@ class homeController extends appController
     $this->data['js']['noty-themes']='noty/themes/default.js';
     
     $this->data['js'][]='laolin.app.js';
+    $this->data['js'][]='laolin.app.home.js';
   }
   
   function firstpage(){  

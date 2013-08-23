@@ -5,7 +5,15 @@
                 } ?>
 <script>
     laolin.wait.ready(function(){
-      //laolin.ui.showInfo('欢迎光临。',500);
+      /* /laolin.ui.showInfo('欢迎光临。',500);
+      $('.sidebar-nav .nav li a[href^="?a=lin&"]').click(function(){
+        laolin.ui.ajaxPage.load($(this).attr('href'),"#main-box >");
+        return false;
+      });*/
+    page=laolin.ui.ajaxPage.loadingPage||laolin.ui.ajaxPage.current;
+    $('.nav li').removeClass('active');
+    $('.nav li a[href="'+page+'"]').parent().addClass('active');
+
     });
 </script>
 </div>
