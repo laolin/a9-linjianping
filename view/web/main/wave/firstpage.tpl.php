@@ -26,7 +26,7 @@
     <p>建议使用Chrome或Firefox浏览器
     <p>如果您使用IE浏览器，建议使用IE10及以上版本。IE8肯定是不兼容的，IE9似乎基本是兼容的，但有时不正常。
       </p>
-    <p><a class="btn btn-primary btn-lg" href='?c=wave&a=wave_ana'>加载地震波分析工具</a></p>
+    <p><a class="btn btn-primary btn-lg" id="load-it" href='?c=wave&a=wave_ana'>加载地震波分析工具</a></p>
     
   </div>
 <script>
@@ -34,6 +34,7 @@
 laolin.wait.ready(function(){
   laolin.ui.showInfo('欢迎使用地震波分析工具');
   laolin.ui.currentPage='';
+  $("#load-it").click(function(){return laolin.app.wave.loadPage('?c=wave&a=wave_ana')});
 });
 </script>
 
