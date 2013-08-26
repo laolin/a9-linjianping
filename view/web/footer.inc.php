@@ -7,6 +7,7 @@
     <ul class="nav nav-list">
       <li class="nav-header">LaoLin系列</li>
       <li class=" "><a href="http://LaoLin.com/lin/" target="_blank">老林日记</a></li>
+      <li class=" "><a href="http://LaoLin.com/wave/" target="_blank">地震波分析工具</a></li>
       <li class=" "><a href="http://laolin.com/t/huoxing/" target="_blank">老林火星文</a></li>
       <li class=" "><a href="http://laolin.com/t/pinyin/" target="_blank">查拼音</a></li>
       <li class=" "><a href="http://laolin.com/ssgg/cutetea/" target="_blank">CuteTEA(硕士论文时编的程序)</a></li>
