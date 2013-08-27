@@ -30,8 +30,7 @@
         }
       }
      </style>
-
-    
+  <!--[if lt IE 9]><script>console={};console.log=function(){};</script><![endif]-->
     <script><?php
     if( file_exists(dirname(__FILE__)  . DS . 'laolin.main.min.js'))
       include_once( dirname(__FILE__)  . DS . 'laolin.main.min.js');
@@ -61,13 +60,9 @@
           console.log('add js files ok.');
     });
     </script>
-  <!--[if lt IE 8]>
-    <script>
-      laolin.data.IE7=1;
-    </script>
-  <![endif]-->
+  <!--[if lt IE 8]><script>laolin.data.IE7=1;</script><![endif]-->
   <!--[if lt IE 9]>
-    <script>console={};console.log=function(){};
+    <script>
     jQTest=100;
     function jQReadyTest(){
       console.log('jQReadyTest:'+jQTest);
