@@ -30,7 +30,8 @@
         }
       }
      </style>
-  <!--[if lt IE 9]><script>console={};console.log=function(){};</script><![endif]-->
+  <!--[if lt IE 9]><script>console={};console.log=function(){};
+  Date.now = function(){return new Date().getTime();}</script><![endif]-->
     <script><?php
     if( file_exists(dirname(__FILE__)  . DS . 'laolin.main.min.js'))
       include_once( dirname(__FILE__)  . DS . 'laolin.main.min.js');
