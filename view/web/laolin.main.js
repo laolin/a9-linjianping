@@ -60,7 +60,7 @@ var laolin={};
 
 (function(laolin){
   laolin.wait={};
-  laolin.data={};laolin.data.L=[];laolin.data.C=[];
+  laolin.data={};
   laolin.wait.loader={};
  
   laolin.wait.list={};
@@ -114,13 +114,11 @@ var laolin={};
     callback=laolin.wait.list[name];
     console.log('E:'+name);
     if(callback)callback();//本项完成
-    laolin.data.C.push(laolin.wait.list);
     delete laolin.wait.list[name];
     
     //检查是不是所有项目都完成了：
     if(laolin.wait.isReady()) {
       console.log('R!');
-    laolin.data.L.push(laolin.wait.callback);
       //这四行是一批都马上执行，但有可能后面的代码要靠前面的代码异步执行完毕（比如加载js）
       //所以可能有问题
       //for( var i=0; i<laolin.wait.callback.length; i++) {
