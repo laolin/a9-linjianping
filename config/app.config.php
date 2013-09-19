@@ -13,28 +13,27 @@ if(!$app_name) {
   }
 }
 
+$GLOBALS['config']['default_controller'] = $app_name;
+$GLOBALS['config']['default_action'] = 'firstpage';
+$GLOBALS['config']['404_controller'] = $app_name;
+$GLOBALS['config']['404_action'] = 'firstpage';
+    
 switch($app_name) {
   case 'api':
     $GLOBALS['config']['site_name'] = 'LaoLinAPI';
     $GLOBALS['config']['site_domain'] = 'api.LaoLin.com';
-    $GLOBALS['config']['default_controller'] = 'api';
     $GLOBALS['config']['default_action'] = 'test';
-    $GLOBALS['config']['404_controller'] = 'api';
     $GLOBALS['config']['404_action'] = 'test';
+    break;
+    
+  case 'xiaoxue':
+    $GLOBALS['config']['site_name'] = '小学教育';
     break;
   case 'wave':
     $GLOBALS['config']['site_name'] = '地震波助手';
-    $GLOBALS['config']['default_controller'] = 'wave';
-    $GLOBALS['config']['default_action'] = 'firstpage';
-    $GLOBALS['config']['404_controller'] = 'wave';
-    $GLOBALS['config']['404_action'] = 'firstpage';
     break;
   case 'jg':
     $GLOBALS['config']['site_name'] = '结构师助手';
-    $GLOBALS['config']['default_controller'] = 'jg';
-    $GLOBALS['config']['default_action'] = 'firstpage';
-    $GLOBALS['config']['404_controller'] = 'jg';
-    $GLOBALS['config']['404_action'] = 'firstpage';
     break;
   case 'linjianping':
   default:
