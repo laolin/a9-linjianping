@@ -13,15 +13,15 @@
 <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
   <div class='shuxue-box'>
     <fieldset id='shuxue-start'>
-      <input type="text" name='sx_time' class="form-control" value='2'>分钟， 
-      <input type="text" name='sx_count' class="form-control" value='20'>题（0表示不限题数）<br/>
-      <input type="text" name='sx_max' class="form-control" value="<?php echo $ks_n; ?>">      
+      <input type="number" min="1" max="5" name='sx_time' class="form-control" value='2'>分钟， 
+      <input type="number" min="0" max="100" name='sx_count' class="form-control" value='20'>题（0表示不限题数）<br/>
+      <input type="number" min="10" max="1000" name='sx_max' class="form-control" value="<?php echo $ks_n; ?>">      
       <button type="button" class="btn btn-info" onclick='sx_start()'>以内加减法,开始测试</button>
     </fieldset>
     <fieldset id='shuxue-working' class='working'>
       <div>用时<b id="shuxue-time">0:00</b>(输入答案后可直接按回车答题)</div>
       第<b id="shuxue-index">1</b>题：<b id="sx_a">A</b><b id="sx_op">+</b><b id="sx_b">B</b>=
-      <input id="sx_ans" name='sx_ans' class="form-control" type="text" placeholder="">
+      <input id="sx_ans" name='sx_ans' class="form-control" type="number" min="0" max="1000">
       <button type="button" class="btn btn-primary" onclick='sx_answer()'>确定</button>
       <button type="button" class="btn btn-warning" onclick='sx_next()'>跳过</button>
     </fieldset>
@@ -37,8 +37,8 @@
         </div>
         
         <ul class="list-group"  id="shuxue-done-list">
-        <li class="list-group-item">用时<b id='shuxue-score-time'></b></li>
-        <li class="list-group-item">做了<b id='shuxue-score-count'></b>题， 正确<b id='shuxue-score-ok'></b>题， 错误<b id='shuxue-score-err'></b>题</li>
+        <li class="list-group-item">做了<b id='shuxue-score-count'></b>题，用时<b id='shuxue-score-time'></b></li>
+        <li class="list-group-item">，正确<b id='shuxue-score-ok'></b>题， 错误<b id='shuxue-score-err'></b>题</li>
         <li class="list-group-item">正确率<b id='shuxue-score-rat'></b>%</li>
         </ul>
       </div>
@@ -79,7 +79,7 @@ function sx_start(){
   $("#shuxue-score").hide();
   $('#shuxue-done-list').html('');
   
-  App.maxN=Fn.getInputValue('sx_max',10,10000,20);//最大数字
+  App.maxN=Fn.getInputValue('sx_max',10,1000,20);//最大数字
   App.maxTime=Fn.getInputValue('sx_time',1,5,2)*60;//完成测试计时的时间（秒）
   App.maxCount=Fn.getInputValue('sx_count',0,100,0);//大于0表示完成测试的题数，=0表示不限
   if(App.maxCount<=0)App.maxCount=999;//小学生做1K题够多啦
@@ -94,7 +94,7 @@ function sx_answer(){
   ans=$("#sx_ans").attr('value');
   if(App.workCurrentIndex>=0){
     if(isNaN(parseInt(ans)))
-      return;
+      return $("#sx_ans").stop().fadeOut(100).fadeIn(200).fadeOut(100).fadeIn(200).focus();
     else
       App.workCurrent.z=parseInt(ans);
     App.workDone[App.workCurrentIndex]=App.workCurrent;
