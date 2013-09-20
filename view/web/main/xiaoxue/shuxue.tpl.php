@@ -4,6 +4,7 @@
     <div class="panel-heading">已做题</div>
     <div class="panel-body">
       <b class='label label-info'>点击已做题目可以在右边修改答案</b>
+      <span id='shuxue-done-score'></span>
     </div>
     
     <ul class="list-group"  id="shuxue-done-list">
@@ -13,32 +14,33 @@
 <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
   <div class='shuxue-box'>
     <fieldset id='shuxue-start'>
-      <input type="number" min="1" max="5" name='sx_time' class="form-control" value='2'>分钟， 
-      <input type="number" min="0" max="100" name='sx_count' class="form-control" value='20'>题（0表示不限题数）<br/>
-      <input type="number" min="10" max="1000" name='sx_max' class="form-control" value="<?php echo $ks_n; ?>">      
-      <button type="button" class="btn btn-info" onclick='sx_start()'>以内加减法,开始测试</button>
+      <input type="number" min="1" max="5" name='sx_time' class="form-control" value='1'>分钟， 
+      <input type="number" min="0" max="100" name='sx_count' class="form-control" value='0'>题（0表示不限题数）<br/>
+      <input type="number" min="10" max="1000" name='sx_max' class="form-control" value="<?php echo $ks_n; ?>"> 以内加减法   
+      <button type="button" class="btn btn-info" onclick='sx_start()'>开始测试</button>
     </fieldset>
-    <fieldset id='shuxue-working' class='working'>
-      <div>用时<b id="shuxue-time">0:00</b>(输入答案后可直接按回车答题)</div>
-      第<b id="shuxue-index">1</b>题：<b id="sx_a">A</b><b id="sx_op">+</b><b id="sx_b">B</b>=
-      <input id="sx_ans" name='sx_ans' class="form-control" type="number" min="0" max="1000">
-      <button type="button" class="btn btn-primary" onclick='sx_answer()'>确定</button>
-      <button type="button" class="btn btn-warning" onclick='sx_next()'>跳过</button>
-    </fieldset>
-    <fieldset id='shuxue-end' class=''>
-      你已完成全部题目，可以检查已完成题目，点击可以进行修改。
-      <button type="button" class="btn btn-info" onclick='sx_end()'>不检查了，完成测试</button>
-    </fieldset>
+    <div class="panel panel-info" id='shuxue-working'>
+      <div class="panel-heading">正在做第<b id="shuxue-index">1</b>题 [总用时<b id="shuxue-time">0:00</b>]</div>
+      <div class="working">
+        <b id="sx_a">A</b><b id="sx_op">+</b><b id="sx_b">B</b>=
+        <input id="sx_ans" name='sx_ans' class="form-control" type="number" min="0" max="1000"
+        data-toggle="tooltip" data-placement='top' title='输入答案后可直接按回车答题'>
+        <button type="button" class="btn btn-primary" onclick='sx_answer()'>确定</button>
+      </div>
+        <button type="button" class="btn btn-warning" onclick='sx_next()'>跳过</button>
+        <button type="button" class="btn btn-info" onclick='sx_end()' id='shuxue-end'
+        data-toggle="tooltip" data-placement='bottom' title='结束测试' data-content='批改一下看是否全对了'>批改</button>
+    </div>
     <div id='shuxue-score' class=''>
       <div class="panel panel-info">
-        <div class="panel-heading">测试结果</div>
+        <div class="panel-heading">批改结果</div>
         <div class="panel-body">
           <b id='shuxue-score-maxn'></b>以内的加减法
         </div>
         
         <ul class="list-group"  id="shuxue-done-list">
         <li class="list-group-item">做了<b id='shuxue-score-count'></b>题，用时<b id='shuxue-score-time'></b></li>
-        <li class="list-group-item">，正确<b id='shuxue-score-ok'></b>题， 错误<b id='shuxue-score-err'></b>题</li>
+        <li class="list-group-item">正确<b id='shuxue-score-ok'></b>题， 错误<b id='shuxue-score-err'></b>题</li>
         <li class="list-group-item">正确率<b id='shuxue-score-rat'></b>%</li>
         </ul>
       </div>
@@ -48,7 +50,6 @@
 laolin.wait.ready(function(){
   
   $("#shuxue-working").hide();
-  $("#shuxue-end").hide();
   $("#shuxue-score").hide();
   $("#sx_max").focus().keypress(function(e){
       if(e.which == 13)sx_start();
@@ -75,7 +76,6 @@ laolin.wait.ready(function(){
 function sx_start(){
   $("#shuxue-start").attr('disabled','disabled');
   $("#shuxue-working").show();
-  $("#shuxue-end").hide();
   $("#shuxue-score").hide();
   $('#shuxue-done-list').html('');
   
@@ -109,7 +109,7 @@ function sx_next(){
    
     i=+App.workCurrentIndex+1;//记住当前题之后一题的位置
     if(App.workDone.length>=App.maxCount) {//题数全完成
-      $("#shuxue-end").show();
+      $("#shuxue-end").popover({trigger:'manual',delay: { show: 500, hide: 100 }});
     } else {
       App.workCurrentIndex=App.workDone.length;//打算新建一题
     }
@@ -136,10 +136,9 @@ function sx_next(){
 
 
 function sx_end(){
-  clearInterval(App.timer);
+  if(App.timer>0)clearInterval(App.timer);
   $("#shuxue-start").removeAttr('disabled');
   //$("#shuxue-working").hide();
-  $("#shuxue-end").hide();
   dok=0;
   derr=0;
   
@@ -156,15 +155,17 @@ function sx_end(){
     }
     drat=Math.round(dok*100/App.workDone.length);
   }
-  $("#shuxue-score-maxn").html(App.maxN);
-  $("#shuxue-score-count").html(App.workDone.length);
-  $("#shuxue-score-time").html(sx_get_time_used());
-  $("#shuxue-score-ok").html(dok);
-  $("#shuxue-score-err").html(derr);
-  $("#shuxue-score-rat").html(drat);
-
+  if(App.timer>0){//不>0，说明已经批改过，不要更新批改数据
+    $("#shuxue-score-maxn").html(App.maxN);
+    $("#shuxue-score-count").html(App.workDone.length);
+    $("#shuxue-score-time").html(sx_get_time_used());
+    $("#shuxue-score-ok").html(dok);
+    $("#shuxue-score-err").html(derr);
+    $("#shuxue-score-rat").html(drat);
+  }
   $("#shuxue-score").show();
-  
+  $("#shuxue-done-score").append($('<span class="label-sx-ok-err label label-success">正确率'+drat+'%</span>'));
+  App.timer=0;
 }
 //==========================
 
@@ -206,10 +207,11 @@ function sx_disp_done_list(n){
   e.html('第'+n+'题:'+d.a+d.op+d.b+'='+d.z);
 }
 function sx_gen_work(){
-  r=(Math.random()+0.45)/1.45; //r=0.31~1
+  r=(Math.random()+0.9)/1.9; //r=0.5~1
+  r2=(Math.random()+0.15)/1.3; //0.1~0.9
   n=Math.round(r*App.maxN);
   
-  b=Math.round(Math.random()*r*App.maxN);
+  b=Math.round(r2*r*App.maxN);
   op=Math.random()>0.5?'+':'-';
   if(op=='-')a=n;else a=n-b;
   return {a:a,op:op,b:b,z:'?'};
