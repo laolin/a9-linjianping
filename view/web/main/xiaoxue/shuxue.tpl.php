@@ -15,7 +15,7 @@
         <input type="number" min="10" max="1000" name='sx_max' class="form-control" value="<?php echo $ks_n; ?>"> 以内加减法   
         </li>
         <li class="list-group-item">
-        <button type="button" class="btn btn-info" onclick='sx_start()' id='shuxue-start-btn' title='先设置好参数' data-content='然后按这里开始' data-placement='bottom'>开始测试</button>
+        <button type="button" class="btn btn-info" disabled onclick='sx_start()' id='shuxue-start-btn' title='先设置好参数' data-content='然后按这里开始' data-placement='bottom'>开始测试</button>
         </li>
       </ul>
     </div>
@@ -86,14 +86,14 @@ laolin.wait.ready(function(){
     App.workCurrent=App.workDone[App.workCurrentIndex];
     sx_disp_work_current();
   });
-  $('#shuxue-start-btn').popover('show');
+  $('#shuxue-start-btn').removeAttr('disabled').popover('show');
     
 });
 
 //----------------------------
 function sx_restart(){
   $("#shuxue-start").show();
-  $('#shuxue-start-btn').popover('show');
+  $('#shuxue-start-btn').removeAttr('disabled').popover('show');
   $("#shuxue-score").hide();
 }
 function sx_start(){
