@@ -9,7 +9,7 @@
           <input type="number" min="1" max="5" name='sx_time' class="form-control" value='1'>分钟
         </li>
         <li class="list-group-item">
-        <input type="number" min="0" max="100" name='sx_count' class="form-control" value='0'>题（0表示不限题数）<br/>
+        <input type="number" min="0" max="100" name='sx_count' class="form-control" value='0'>题（0=不限）<br/>
         </li>
         <li class="list-group-item">
         <input type="number" min="10" max="1000" name='sx_max' class="form-control" value="<?php echo $ks_n; ?>"> 以内加减法   
@@ -63,7 +63,6 @@
 </div>           
 <script>
 laolin.wait.ready(function(){
-  
   $("#shuxue-working").hide();
   $("#shuxue-score").hide();
   $("#shuxue-end").hide();
@@ -113,6 +112,7 @@ function sx_start(){
   $("#shuxue-working").show();
   $("#shuxue-working-info").html('限时'+App.maxTime+'，总题数'+App.maxCount+'，'+App.maxN+'以内的加减法');
   $("#shuxue-score").hide();
+  $(".label-sx-ok-err").remove();
   $("#shuxue-end").hide();
   $('#shuxue-done-list').html('');
   
