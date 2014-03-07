@@ -90,7 +90,7 @@
     </div>
     
   <script type="text/javascript">
-  if('127.0.0.1' != document.location.host && !_gaq){var _gaq = _gaq || [];
+  if('127.0.0.1' != document.location.host /*&& !_gaq*/){var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-922595-1']);
   _gaq.push(['_trackPageview']);
   (function() {
