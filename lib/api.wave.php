@@ -11,6 +11,7 @@ function apiWaveMain() {
   
   $b=v('b');
   $js=v('js');
+  if(!$js)$js=v('callback');//angular规定必须使用参数callback
   $type=v('type');
   
   $json=0;
