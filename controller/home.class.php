@@ -121,7 +121,7 @@ class homeController extends appController
             <li><a href="http://TongJiAD.com">TongJiAD.com (同济AD)</a></li>
             <li><a href="http://PingLiPou.com">PingLiPou.com (平立剖)</a></li>
             <li><a href="http://AnQiuXiang.com">AnQiuXiang.com</a></li>
-            <li><a href="http://PKPMP.com">PKPMP.com</a></li>
+            <li><a href="http://tjad.info">TJAD.info</a></li>
             </ol>
         ');
     $this->data['about_laolin'][]=array(

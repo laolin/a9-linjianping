@@ -37,7 +37,7 @@ switch($app_name) {
     break;
   case 'linjianping':
   default:
-    $GLOBALS['config']['site_name'] = '林建萍';
+    $GLOBALS['config']['site_name'] = '<img src="http://static.laolin.info/img/develop/laolin-logo-l-32.png"/>林建萍';
     $GLOBALS['config']['default_controller'] = 'home';
     $GLOBALS['config']['default_action'] = 'firstpage';
     $GLOBALS['config']['404_controller'] = 'home';
