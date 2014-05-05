@@ -33,6 +33,25 @@
   </div>
 
   <div class='col-sm-4 col-lg-4'>
+  
+        <script src='http://tjs.sjs.sinajs.cn/open/api/js/wb.js?appkey=1712865811' type='text/javascript' charset='utf-8'></script>
+        <div id='wb_connect_btn'></div>
+        <script>
+      WB2.anyWhere(function(W){
+        W.widget.connectButton({
+          id: "wb_connect_btn",	
+          type:'3,2',
+          callback : {
+            login:function(o){	//登录后的回调函数
+            },
+            logout:function(){	//退出后的回调函数
+            }
+          }
+        });
+      });
+        
+     </script>
+     
    <p>老林的<b>微博</b>：<a href='http://weibo.com/n/laolincom/'>@LaolinCom</a>, 欢迎关注。</p>
    <p>老林的<b>微信公众账号</b>：laolin-jg , 请在微信里搜索“laolin-jg”或扫描以下二维码关注我的微信</p>
   <img title='老林微信公众账号：laolin-jg' src='http://files.laolin.com/images/qrcode_for_laolin-jg_258.jpg'/>
