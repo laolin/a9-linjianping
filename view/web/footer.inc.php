@@ -57,7 +57,7 @@
          
 (function(){
 var url = "http://widget.weibo.com/distribution/comments.php?width=0&url=<?php
-echo urlencode('http://'.$_SERVER["HTTP_HOST"].strtok($_SERVER["REQUEST_URI"],'?'));
+echo urlencode('http://'.$_SERVER["HTTP_HOST"]);
 ?>&appkey=1942305827&dpc=1";
 document.write('<iframe id="WBCommentFrame" src="' + url + '" scrolling="no" frameborder="0" style="width:100%"></iframe>');
 })(); 
