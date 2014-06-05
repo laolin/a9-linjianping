@@ -34,7 +34,7 @@
 
   <div class='col-sm-4 col-lg-4'>
   
-        <script src='http://tjs.sjs.sinajs.cn/open/api/js/wb.js?appkey=1712865811' type='text/javascript' charset='utf-8'></script>
+        <script src='http://tjs.sjs.sinajs.cn/open/api/js/wb.js?appkey=1942305827' type='text/javascript' charset='utf-8'></script>
         <div id='wb_connect_btn'></div>
         
         
@@ -58,7 +58,7 @@
 (function(){
 var url = "http://widget.weibo.com/distribution/comments.php?width=0&url=<?php
 echo urlencode('http://'.$_SERVER["HTTP_HOST"].strtok($_SERVER["REQUEST_URI"],'?'));
-?>&appkey=1712865811&dpc=1";
+?>&appkey=1942305827&dpc=1";
 document.write('<iframe id="WBCommentFrame" src="' + url + '" scrolling="no" frameborder="0" style="width:100%"></iframe>');
 })(); 
 
